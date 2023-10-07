@@ -26,7 +26,7 @@ public class Libros {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_libro;
+    private Long idLibro;
     private String titulo;
     private String autor;
     private String edicion;
@@ -34,7 +34,7 @@ public class Libros {
     private String estado;
     private String keywords;
     private String notas;
-    private Long id_doctor;
+    private Long idDoctor;
     private String compartido;
     private String digital;
 

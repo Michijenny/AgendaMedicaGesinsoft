@@ -26,7 +26,7 @@ public class Rol {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_rol;
+    private Long idRol;
     private String nombre;
     
     //RELACION

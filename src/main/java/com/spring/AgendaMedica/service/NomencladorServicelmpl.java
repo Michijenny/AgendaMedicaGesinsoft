@@ -6,6 +6,7 @@ package com.spring.AgendaMedica.service;
 
 import com.spring.AgendaMedica.modelo.Nomenclador;
 import com.spring.AgendaMedica.repository.NomencladorRepository;
+import com.spring.AgendaMedica.servicios.NomencladorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class NomencladorServicelmpl extends GenericServiceImpl<Nomenclador, Long> implements GenericService<Nomenclador, Long> {
+public class NomencladorServicelmpl extends GenericServiceImpl<Nomenclador, Long> implements NomencladorService {
 
     @Autowired
     NomencladorRepository nomencladorRepository;

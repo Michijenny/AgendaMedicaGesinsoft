@@ -6,11 +6,13 @@ package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Data1;
 import com.spring.AgendaMedica.service.DataServicelmpl;
+import com.spring.AgendaMedica.servicios.DataService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
+@CrossOrigin(origins = { "*" })
 @RestController
-@RequestMapping("/data")
+@RequestMapping("/api/data")
 public class DataController {
 
     @Autowired
-    DataServicelmpl dataService;
+    DataService dataService;
 
     @GetMapping("/listar")
     public ResponseEntity<List<Data1>> listarData() {
@@ -51,7 +54,7 @@ public class DataController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                data.setId_medico(d.getId_medico());
+                data.setIdMedico(d.getIdMedico());
                 data.setValor(d.getValor());
                 data.setVariable(d.getVariable());
                 return new ResponseEntity<>(dataService.save(d), HttpStatus.OK);

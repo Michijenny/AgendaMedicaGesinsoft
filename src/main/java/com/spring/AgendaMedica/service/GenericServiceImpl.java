@@ -21,32 +21,25 @@ public abstract class GenericServiceImpl<T, ID extends Serializable> implements 
     public abstract CrudRepository<T, ID> getDao();
 
     @Override
-    public T save(T Entity) {
-        return getDao().save(Entity);
+    public T save(T entity) {
+        return getDao().save(entity);
     }
 
     @Override
     public T findById(ID id) {
-        Optional<T> obj = getDao().findById(id);
-        if (obj.isPresent()) {
-            return obj.get();
-        }
-        return null;
+        Optional<T> optional = getDao().findById(id);
+        return optional.orElse(null);
     }
 
-    @Override
+   @Override
     public List<T> findByAll() {
         List<T> list = new ArrayList<>();
-        getDao().findAll().forEach(obj -> list.add(obj));
+        getDao().findAll().forEach(data -> list.add(data));
         return list;
     }
-
+    
     @Override
     public void delete(ID id) {
         getDao().deleteById(id);
     }
-            
-    
-    
-    
 }

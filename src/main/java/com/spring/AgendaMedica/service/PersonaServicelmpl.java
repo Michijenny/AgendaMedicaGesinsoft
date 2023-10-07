@@ -7,6 +7,8 @@ package com.spring.AgendaMedica.service;
 import org.springframework.stereotype.Service;
 import com.spring.AgendaMedica.modelo.Persona;
 import com.spring.AgendaMedica.repository.PersonaRepository;
+import com.spring.AgendaMedica.servicios.PersonaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -14,8 +16,9 @@ import org.springframework.data.repository.CrudRepository;
  * @author enriq
  */
 @Service
-public class PersonaServicelmpl extends GenericServiceImpl<Persona, Long> implements GenericService<Persona, Long> {
 
+public class PersonaServicelmpl extends GenericServiceImpl<Persona, Long> implements PersonaService  {
+    @Autowired
     PersonaRepository personaRepository;
 
     @Override

@@ -6,11 +6,13 @@ package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Libreta;
 import com.spring.AgendaMedica.service.LibretaServicelmpl;
+import com.spring.AgendaMedica.servicios.LibretaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
+@CrossOrigin(origins = { "*" })
 @RestController
-@RequestMapping("/libreta")
+@RequestMapping("/api/libreta")
 public class LibretaController {
 
     @Autowired
-    LibretaServicelmpl libretaService;
+    LibretaService libretaService;
 
     @GetMapping("/listar")
     public ResponseEntity<List<Libreta>> listarLibreta() {

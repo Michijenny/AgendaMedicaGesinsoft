@@ -6,11 +6,13 @@ package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Vademecum;
 import com.spring.AgendaMedica.service.VademecumServicelmpl;
+import com.spring.AgendaMedica.servicios.VademecumService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
+@CrossOrigin(origins = { "*" })
 @RestController
-@RequestMapping("/vademecum")
+@RequestMapping("/api/vademecum")
 public class VademecumController {
 
     @Autowired
-    VademecumServicelmpl vaService;
+    VademecumService vaService;
 
     @GetMapping("/listar")
     public ResponseEntity<List<Vademecum>> listarVademecum() {
@@ -51,7 +54,7 @@ public class VademecumController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                vade.setId_doctor(v.getId_doctor());
+                vade.setIdDoctor(v.getIdDoctor());
                 vade.setCompartido(v.getCompartido());
                 vade.setLaboratorio(v.getLaboratorio());
                 vade.setMedicamento(v.getMedicamento());
@@ -59,7 +62,7 @@ public class VademecumController {
                 vade.setIndicaciones(v.getIndicaciones());
                 vade.setContraindicaciones(v.getContraindicaciones());
                 vade.setPosologia(v.getPosologia());
-                vade.setId_categoria(v.getId_categoria());
+                vade.setIdCategoria(v.getIdCategoria());
                 vade.setEquivalencias(v.getEquivalencias());
                 vade.setAnotaciones(v.getAnotaciones());
                 vade.setStock(v.getStock());

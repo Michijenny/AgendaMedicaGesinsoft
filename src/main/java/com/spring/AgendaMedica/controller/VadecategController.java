@@ -6,11 +6,13 @@ package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Vadecateg;
 import com.spring.AgendaMedica.service.VadecategServicelmpl;
+import com.spring.AgendaMedica.servicios.VadecategService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
+@CrossOrigin(origins = { "*" })
 @RestController
-@RequestMapping("/vadecateg")
+@RequestMapping("/api/vadecateg")
 public class VadecategController {
 
     @Autowired
-    VadecategServicelmpl vadeService;
+    VadecategService vadeService;
 
     @GetMapping("/listar")
     public ResponseEntity<List<Vadecateg>> listarCategoria() {
@@ -52,7 +55,7 @@ public class VadecategController {
         } else {
             try {
                 vad.setTitulo(v.getTitulo());
-                vad.setId_doctor(v.getId_doctor());
+                vad.setIdDoctor(v.getIdDoctor());
                 vad.setTipo(v.getTipo());
                 return new ResponseEntity<>(vadeService.save(v), HttpStatus.OK);
             } catch (DataAccessException e) {

@@ -6,11 +6,13 @@ package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Historias;
 import com.spring.AgendaMedica.service.HistoriasServicelmpl;
+import com.spring.AgendaMedica.servicios.HistoriasService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
+@CrossOrigin(origins = { "*" })
 @RestController
-@RequestMapping("/historias")
+@RequestMapping("/api/historias")
 public class HistoriasController {
 
     @Autowired
-    HistoriasServicelmpl historiaService;
+    HistoriasService historiaService;
 
     @GetMapping("/listar")
     public ResponseEntity<List<Historias>> listarHistorias() {
@@ -53,7 +56,7 @@ public class HistoriasController {
             try {
                 his.setFecha(h.getFecha());
                 his.setNota(h.getNota());
-                his.setId_autor(h.getId_autor());
+                his.setIdAutor(h.getIdAutor());
                 his.setFirma(h.getFirma());
                 return new ResponseEntity<>(historiaService.save(h), HttpStatus.OK);
             } catch (DataAccessException e) {

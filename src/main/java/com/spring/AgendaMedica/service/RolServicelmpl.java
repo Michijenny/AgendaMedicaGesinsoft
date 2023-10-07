@@ -6,6 +6,7 @@ package com.spring.AgendaMedica.service;
 
 import com.spring.AgendaMedica.modelo.Rol;
 import com.spring.AgendaMedica.repository.RolRepository;
+import com.spring.AgendaMedica.servicios.RolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class RolServicelmpl extends GenericServiceImpl<Rol, Long> implements GenericService<Rol, Long> {
+public class RolServicelmpl extends GenericServiceImpl<Rol, Long> implements RolService {
 
     @Autowired
     RolRepository rolRepository;

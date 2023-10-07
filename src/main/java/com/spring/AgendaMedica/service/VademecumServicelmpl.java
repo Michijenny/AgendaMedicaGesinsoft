@@ -6,6 +6,7 @@ package com.spring.AgendaMedica.service;
 
 import com.spring.AgendaMedica.modelo.Vademecum;
 import com.spring.AgendaMedica.repository.VademecumRepository;
+import com.spring.AgendaMedica.servicios.VademecumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class VademecumServicelmpl extends GenericServiceImpl<Vademecum, Long> implements GenericService<Vademecum, Long> {
+public class VademecumServicelmpl extends GenericServiceImpl<Vademecum, Long> implements VademecumService {
 
     @Autowired
     VademecumRepository vademecumRepository;

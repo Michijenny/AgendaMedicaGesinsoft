@@ -6,6 +6,7 @@ package com.spring.AgendaMedica.service;
 
 import com.spring.AgendaMedica.modelo.ObraSocial;
 import com.spring.AgendaMedica.repository.ObraSocialRepository;
+import com.spring.AgendaMedica.servicios.ObraSocialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class ObraSocialServicelmpl extends GenericServiceImpl<ObraSocial, Long> implements GenericService<ObraSocial, Long> {
+public class ObraSocialServicelmpl extends GenericServiceImpl<ObraSocial, Long> implements ObraSocialService {
 
     @Autowired
     ObraSocialRepository obraRepository;

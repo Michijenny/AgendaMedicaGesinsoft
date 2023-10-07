@@ -5,6 +5,7 @@
 package com.spring.AgendaMedica.service;
 import  com.spring.AgendaMedica.repository.ImagenesRepository;
 import  com.spring.AgendaMedica.modelo.Imagenes;
+import com.spring.AgendaMedica.servicios.ImagenesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class ImagenesServicelmpl extends GenericServiceImpl<Imagenes, Long> implements GenericService<Imagenes, Long> {
+public class ImagenesServicelmpl extends GenericServiceImpl<Imagenes, Long> implements ImagenesService {
 
     @Autowired
     ImagenesRepository imagenesRepository;

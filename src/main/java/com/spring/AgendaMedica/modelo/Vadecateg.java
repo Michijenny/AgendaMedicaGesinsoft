@@ -26,8 +26,8 @@ public class Vadecateg {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_categoria;
+    private Long idCategoria;
     private String titulo;
-    private Long id_doctor;
+    private Long idDoctor;
     private String tipo;
 }

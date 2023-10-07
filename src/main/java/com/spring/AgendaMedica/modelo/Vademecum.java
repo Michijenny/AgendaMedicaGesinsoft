@@ -27,7 +27,7 @@ public class Vademecum {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long id_doctor;
+    private Long idDoctor;
     private String compartido;
     private String laboratorio;
     private String medicamento;
@@ -35,7 +35,7 @@ public class Vademecum {
     private String indicaciones;
     private String contraindicaciones;
     private String posologia;
-    private Long id_categoria;
+    private Long idCategoria;
     private String equivalencias;
     private String anotaciones;
     private int stock;

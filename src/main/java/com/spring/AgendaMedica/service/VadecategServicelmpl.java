@@ -6,6 +6,7 @@ package com.spring.AgendaMedica.service;
 
 import com.spring.AgendaMedica.modelo.Vadecateg;
 import com.spring.AgendaMedica.repository.VadecategRepository;
+import com.spring.AgendaMedica.servicios.VadecategService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class VadecategServicelmpl extends GenericServiceImpl<Vadecateg, Long> implements GenericService<Vadecateg, Long> {
+public class VadecategServicelmpl extends GenericServiceImpl<Vadecateg, Long> implements VadecategService {
 
     @Autowired
     VadecategRepository vadecategRepository;

@@ -26,8 +26,8 @@ public class Administrador {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_administrador;
-    private Long id_rol;
+    private Long idAdministrador;
+    private Long idRol;
     private String usuario;
     private String password;
     

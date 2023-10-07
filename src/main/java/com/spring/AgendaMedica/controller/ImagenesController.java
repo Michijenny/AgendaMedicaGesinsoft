@@ -6,11 +6,13 @@ package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Imagenes;
 import com.spring.AgendaMedica.service.ImagenesServicelmpl;
+import com.spring.AgendaMedica.servicios.ImagenesService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
+@CrossOrigin(origins = { "*" })
 @RestController
-@RequestMapping("/imagenes")
+@RequestMapping("/api/imagenes")
 public class ImagenesController {
 
     @Autowired
-    ImagenesServicelmpl imagenService;
+    ImagenesService imagenService;
 
     @GetMapping("/listar")
     public ResponseEntity<List<Imagenes>> listarImagenes() {
@@ -55,7 +58,7 @@ public class ImagenesController {
                 ima.setPath(i.getPath());
                 ima.setNota(i.getNota());
                 ima.setTipo(i.getTipo());
-                ima.setId_autor(i.getId_autor());
+                ima.setIdAutor(i.getIdAutor());
                 ima.setFirma(i.getFirma());
                 return new ResponseEntity<>(imagenService.save(i), HttpStatus.OK);
             } catch (DataAccessException e) {

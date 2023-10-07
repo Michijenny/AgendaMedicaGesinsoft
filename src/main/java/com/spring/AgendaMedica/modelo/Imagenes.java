@@ -27,13 +27,13 @@ public class Imagenes {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_imagen;
-    private Long id_paciente;
+    private Long idImagen;
+    private Long idPaciente;
     private Date fecha;
     private String path;
     private String nota;
     private String tipo;
-    private String id_autor;
+    private String idAutor;
     private String firma;
 
 }

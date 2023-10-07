@@ -26,8 +26,8 @@ public class Doctor {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_doctor;
-    private Long id_rol;
+    private Long idDoctor;
+    private Long idRol;
     private String nombre;
     private String clavesecreta;
     private String comentarios;

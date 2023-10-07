@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import com.spring.AgendaMedica.modelo.Administrador;
+import com.spring.AgendaMedica.servicios.AdministradorService;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,13 +26,13 @@ import org.springframework.web.bind.annotation.PutMapping;
  *
  * @author enriq
  */
-
+@CrossOrigin(origins = { "*" })
 @RestController
-@RequestMapping("/administrador")
+@RequestMapping("/api/administrador")
 public class AdministradorController {
 
     @Autowired
-    AdministradorServicelmpl administradorService;
+    AdministradorService administradorService;
 
     @GetMapping("/listar")
     public ResponseEntity<List<Administrador>> listarAdministrador() {
@@ -52,7 +54,7 @@ public class AdministradorController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                admin.setId_rol(a.getId_rol());
+                admin.setIdRol(a.getIdRol());
                 admin.setUsuario(a.getUsuario());
                 admin.setPassword(a.getPassword());
                 return new ResponseEntity<>(administradorService.save(a), HttpStatus.OK);

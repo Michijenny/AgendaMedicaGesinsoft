@@ -26,9 +26,9 @@ public class Data1 {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_data;
+    private Long idData;
     private String variable;
     private double valor;
-    private Long id_medico;
+    private Long idMedico;
 
 }

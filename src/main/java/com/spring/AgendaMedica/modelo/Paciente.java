@@ -27,8 +27,8 @@ public class Paciente {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_paciente;
-    private Long id_rol;
+    private Long idPaciente;
+    private Long idRol;
     private String apellido;
     private String nombre;
     private String documento;
@@ -59,9 +59,9 @@ public class Paciente {
     private String extra10;
     private String civil;
     private Long id_doctor;
-    private String campo_cfg_1;
-    private String campo_cfg_2;
-    private String campo_cfg_3;
+    private String campoCfg_1;
+    private String campoCfg_2;
+    private String campoCfg_3;
     private String tipodocumento;
     private String abrir;
     private String field;

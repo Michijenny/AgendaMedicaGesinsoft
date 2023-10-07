@@ -26,7 +26,7 @@ public class Proveedor {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_proveedor;
+    private Long idProveedor;
     private String servicio;
     private String telefono1;
     private String telefono2;

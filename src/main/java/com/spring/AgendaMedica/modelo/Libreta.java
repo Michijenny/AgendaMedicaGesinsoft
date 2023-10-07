@@ -26,7 +26,7 @@ public class Libreta {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_libreta;
+    private Long idLibreta;
     private String nombre;
     private String telefono;
     private String celular;

@@ -6,11 +6,13 @@ package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Persona;
 import com.spring.AgendaMedica.service.PersonaServicelmpl;
+import com.spring.AgendaMedica.servicios.PersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
+@CrossOrigin(origins = { "*" })
 @RestController
-@RequestMapping("/persona")
+@RequestMapping("/api/persona")
 public class PersonaController {
 
     @Autowired
-    PersonaServicelmpl perService;
+    PersonaService perService;
 
     @GetMapping("/listar")
     public ResponseEntity<List<Persona>> listarPersona() {
@@ -51,10 +54,10 @@ public class PersonaController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                per.setPrimer_nombre(p.getPrimer_nombre());
-                per.setPrimer_nombre(p.getPrimer_nombre());
-                per.setPrimer_apellido(p.getPrimer_apellido());
-                per.setSegundo_apellido(p.getSegundo_apellido());
+                per.setCedula(p.getCedula());
+                per.setPrimerNombre(p.getPrimerNombre());
+                per.setPrimerApellido(p.getPrimerApellido());
+                per.setSegundoNombre(p.getSegundoApellido());
                 per.setGenero(p.getGenero());
                 per.setFechanacimiento(p.getFechanacimiento());
                 per.setCorreo(p.getCorreo());

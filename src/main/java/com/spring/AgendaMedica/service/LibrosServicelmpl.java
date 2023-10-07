@@ -6,6 +6,7 @@ package com.spring.AgendaMedica.service;
 
 import com.spring.AgendaMedica.modelo.Libros;
 import com.spring.AgendaMedica.repository.LibrosRepository;
+import com.spring.AgendaMedica.servicios.LibrosService;
 import java.io.Serializable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class LibrosServicelmpl extends GenericServiceImpl<Libros, Long> implements GenericService<Libros, Long> {
+public class LibrosServicelmpl extends GenericServiceImpl<Libros, Long> implements LibrosService {
 
     @Autowired
     LibrosRepository librosRepository;
