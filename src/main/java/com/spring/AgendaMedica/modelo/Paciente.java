@@ -58,10 +58,10 @@ public class Paciente {
     private String extra9;
     private String extra10;
     private String civil;
-    private Long id_doctor;
-    private String campoCfg_1;
-    private String campoCfg_2;
-    private String campoCfg_3;
+    private Long idDoctor;
+    private String campoCfg1;
+    private String campoCfg2;
+    private String campoCfg3;
     private String tipodocumento;
     private String abrir;
     private String field;

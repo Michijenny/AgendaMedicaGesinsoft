@@ -83,10 +83,10 @@ public class PacienteController {
                 pac.setExtra9(p.getExtra9());
                 pac.setExtra10(p.getExtra10());
                 pac.setCivil(p.getCivil());
-                pac.setId_doctor(p.getId_doctor());
-                pac.setCampoCfg_1(p.getCampoCfg_1());
-                pac.setCampoCfg_2(p.getCampoCfg_2());
-                pac.setCampoCfg_3(p.getCampoCfg_3());
+                pac.setIdDoctor(p.getIdDoctor());
+                pac.setCampoCfg1(p.getCampoCfg1());
+                pac.setCampoCfg2(p.getCampoCfg2());
+                pac.setCampoCfg3(p.getCampoCfg3());
                 pac.setTipodocumento(p.getTipodocumento());
                 pac.setAbrir(p.getAbrir());
                 pac.setField(p.getField());
