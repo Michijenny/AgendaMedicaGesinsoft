@@ -35,13 +35,13 @@ public class Doctor {
     private String especialidad;
     private String telefono;
     private String clave;
-    private String nota_auto;
+    private String notaAuto;
     private String nota;
     private String comparte;
     private String cfg;
     private String cfgsec;
     private String email;
-    private String extra_asister;
+    private String extraAsister;
     private String field;
 
 }

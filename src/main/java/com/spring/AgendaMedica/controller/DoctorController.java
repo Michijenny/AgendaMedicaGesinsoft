@@ -61,12 +61,12 @@ public class DoctorController {
                 doc.setEspecialidad(d.getEspecialidad());
                 doc.setTelefono(d.getTelefono());
                 doc.setClave(d.getClave());
-                doc.setNota_auto(d.getNota_auto());
+                doc.setNotaAuto(d.getNotaAuto());
                 doc.setNota(d.getNota());
                 doc.setCfg(d.getCfg());
                 doc.setCfgsec(d.getCfgsec());
                 doc.setEmail(d.getEmail());
-                doc.setExtra_asister(d.getExtra_asister());
+                doc.setExtraAsister(d.getExtraAsister());
                 doc.setField(d.getField());
                 return new ResponseEntity<>(doctorService.save(d), HttpStatus.OK);
             } catch (DataAccessException e) {
