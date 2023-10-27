@@ -26,8 +26,18 @@ public class Nomenclador {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String descripcion;
     private double valor;
+
+    //CONSTRUCTORES
+    public Nomenclador() {
+    }
+
+    public Nomenclador(Integer id, String descripcion, double valor) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.valor = valor;
+    }
 
 }

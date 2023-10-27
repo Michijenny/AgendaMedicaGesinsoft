@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class HistoriasServicelmpl extends GenericServiceImpl<Historias, Long> implements HistoriasService{
+public class HistoriasServicelmpl extends GenericServiceImpl<Historias, Integer> implements HistoriasService{
     
     @Autowired
     HistoriasRepository historiaRepository;
 
     @Override
-    public CrudRepository<Historias, Long> getDao() {
+    public CrudRepository<Historias, Integer> getDao() {
         return historiaRepository;
     }
 

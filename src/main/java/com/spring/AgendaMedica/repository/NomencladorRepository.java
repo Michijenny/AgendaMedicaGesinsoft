@@ -6,12 +6,13 @@ package com.spring.AgendaMedica.repository;
 
 import com.spring.AgendaMedica.modelo.Nomenclador;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author enriq
  */
-
-public interface NomencladorRepository extends JpaRepository<Nomenclador, Long> {
+@Repository
+public interface NomencladorRepository extends JpaRepository<Nomenclador, Integer> {
 
 }

@@ -11,6 +11,7 @@ import com.spring.AgendaMedica.modelo.Vadecateg;
  *
  * @author enriq
  */
-public interface VadecategRepository extends JpaRepository<Vadecateg, Long> {
+
+public interface VadecategRepository extends JpaRepository<Vadecateg, Integer> {
 
 }

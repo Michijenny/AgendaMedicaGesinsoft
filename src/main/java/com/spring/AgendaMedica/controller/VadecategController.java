@@ -48,7 +48,7 @@ public class VadecategController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Vadecateg> actualizarCategoria(@PathVariable Long id, @RequestBody Vadecateg v) {
+    public ResponseEntity<Vadecateg> actualizarCategoria(@PathVariable Integer id, @RequestBody Vadecateg v) {
         Vadecateg vad = vadeService.findById(id);
         if (vad == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -65,7 +65,7 @@ public class VadecategController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Vadecateg> eliminarCategoria(@PathVariable Long id) {
+    public ResponseEntity<Vadecateg> eliminarCategoria(@PathVariable Integer id) {
         vadeService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

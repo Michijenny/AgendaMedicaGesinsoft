@@ -11,6 +11,6 @@ import com.spring.AgendaMedica.service.GenericService;
  *
  * @author ASUS ROG
  */
-public interface PacienteService extends GenericService<Paciente, Long>{
+public interface PacienteService extends GenericService<Paciente, Integer>{
     
 }

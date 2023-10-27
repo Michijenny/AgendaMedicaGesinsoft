@@ -27,11 +27,26 @@ public class Historias {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idHistoria;
-    private Long idPaciente;
+    private Integer idHistoria;
+    private Integer idPaciente;
     private Date fecha;
     private String nota;
     private String idAutor;
     private String firma;
+
+    public Historias() {
+    }
+
+    public Historias(Integer idHistoria, Integer idPaciente, Date fecha, String nota, String idAutor, String firma) {
+        this.idHistoria = idHistoria;
+        this.idPaciente = idPaciente;
+        this.fecha = fecha;
+        this.nota = nota;
+        this.idAutor = idAutor;
+        this.firma = firma;
+    }
+    
+    
+    
 
 }

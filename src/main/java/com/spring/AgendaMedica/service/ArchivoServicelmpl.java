@@ -4,9 +4,10 @@
  */
 package com.spring.AgendaMedica.service;
 
-import com.spring.AgendaMedica.modelo.ObraSocial;
-import com.spring.AgendaMedica.repository.ObraSocialRepository;
-import com.spring.AgendaMedica.servicios.ObraSocialService;
+import java.io.Serializable;
+import com.spring.AgendaMedica.modelo.Archivos;
+import com.spring.AgendaMedica.repository.ArchivoRepository;
+import com.spring.AgendaMedica.servicios.ArchivoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -16,14 +17,14 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class ObraSocialServicelmpl extends GenericServiceImpl<ObraSocial, Long> implements ObraSocialService {
+public class ArchivoServicelmpl extends GenericServiceImpl<Archivos, Integer> implements ArchivoService {
 
     @Autowired
-    ObraSocialRepository obraRepository;
+    ArchivoRepository archivoRepository;
 
     @Override
-    public CrudRepository<ObraSocial, Long> getDao() {
-        return obraRepository;
+    public CrudRepository<Archivos, Integer> getDao() {
+        return archivoRepository;
     }
 
 }

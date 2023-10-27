@@ -4,13 +4,15 @@
  */
 package com.spring.AgendaMedica.repository;
 
-import com.spring.AgendaMedica.modelo.Proveedor;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.spring.AgendaMedica.modelo.Oftalmologia;
 
 /**
  *
  * @author enriq
  */
-public interface ProveedorRepository extends JpaRepository<Proveedor, Long> {
+@Repository
+public interface OftalmologiaRepository extends JpaRepository<Oftalmologia, Integer> {
 
 }

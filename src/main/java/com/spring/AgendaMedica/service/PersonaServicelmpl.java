@@ -17,12 +17,12 @@ import org.springframework.data.repository.CrudRepository;
  */
 @Service
 
-public class PersonaServicelmpl extends GenericServiceImpl<Persona, Long> implements PersonaService  {
+public class PersonaServicelmpl extends GenericServiceImpl<Persona, Integer> implements PersonaService  {
     @Autowired
     PersonaRepository personaRepository;
 
     @Override
-    public CrudRepository<Persona, Long> getDao() {
+    public CrudRepository<Persona, Integer> getDao() {
         return personaRepository;
     }
 

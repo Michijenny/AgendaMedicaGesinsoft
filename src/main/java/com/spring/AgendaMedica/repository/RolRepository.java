@@ -5,13 +5,19 @@
 package com.spring.AgendaMedica.repository;
 
 import com.spring.AgendaMedica.modelo.Rol;
+import com.spring.AgendaMedica.modelo.RolNombres;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author enriq
  */
+@Repository
+public interface RolRepository extends JpaRepository<Rol, Integer> {
 
-public interface RolRepository extends JpaRepository<Rol, Long> {
-
+//    Optional <Rol> findByRolNombre (RolNombres rolnombre);
+    
+    Optional<Rol> findByRolNombre(RolNombres integer);
 }

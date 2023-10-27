@@ -4,7 +4,7 @@
  */
 package com.spring.AgendaMedica.controller;
 
-import com.spring.AgendaMedica.service.AdministradorServicelmpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,7 +48,7 @@ public class AdministradorController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Administrador> actualizarAdministrador(@PathVariable Long id, @RequestBody Administrador a) {
+    public ResponseEntity<Administrador> actualizarAdministrador(@PathVariable Integer id, @RequestBody Administrador a) {
         Administrador admin = administradorService.findById(id);
         if (admin == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -65,7 +65,7 @@ public class AdministradorController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Administrador> eliminarAdministrador(@PathVariable Long id) {
+    public ResponseEntity<Administrador> eliminarAdministrador(@PathVariable Integer id) {
         administradorService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

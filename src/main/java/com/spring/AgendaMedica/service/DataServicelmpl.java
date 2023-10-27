@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.spring.AgendaMedica.service;
-import com.spring.AgendaMedica.modelo.Data1;
+import com.spring.AgendaMedica.modelo.Datas;
 import com.spring.AgendaMedica.repository.DataRepository;
 import com.spring.AgendaMedica.servicios.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +16,13 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class DataServicelmpl extends GenericServiceImpl<Data1, Long> implements DataService {
+public class DataServicelmpl extends GenericServiceImpl<Datas, Integer> implements DataService {
 
     @Autowired
     DataRepository dataRepository;
 
     @Override
-    public CrudRepository<Data1, Long> getDao() {
+    public CrudRepository<Datas, Integer> getDao() {
         return dataRepository;
     }
 }

@@ -4,6 +4,7 @@
  */
 package com.spring.AgendaMedica.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +27,8 @@ public class Libros {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idLibro;
+    private Integer idLibro;
+    @Column(unique = true)
     private String titulo;
     private String autor;
     private String edicion;
@@ -37,5 +39,22 @@ public class Libros {
     private Long idDoctor;
     private String compartido;
     private String digital;
+
+    public Libros() {
+    }
+
+    public Libros(Integer idLibro, String titulo, String autor, String edicion, String ubicacion, String estado, String keywords, String notas, Long idDoctor, String compartido, String digital) {
+        this.idLibro = idLibro;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.edicion = edicion;
+        this.ubicacion = ubicacion;
+        this.estado = estado;
+        this.keywords = keywords;
+        this.notas = notas;
+        this.idDoctor = idDoctor;
+        this.compartido = compartido;
+        this.digital = digital;
+    }
 
 }

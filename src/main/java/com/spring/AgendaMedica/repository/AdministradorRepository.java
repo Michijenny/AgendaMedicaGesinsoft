@@ -6,11 +6,21 @@ package com.spring.AgendaMedica.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.spring.AgendaMedica.modelo.Administrador;
+import java.util.Optional;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author enriq
  */
-public interface AdministradorRepository extends JpaRepository<Administrador, Long> {
+
+@Repository
+public interface AdministradorRepository extends JpaRepository<Administrador, Integer> {
+
+//    Optional<Administrador> NombreAdministrador(String nombreAd);
+//
+//    boolean existeAdmin(String nombreAdmin);
+    
+    //boolean existeByEmail (String email);
 
 }

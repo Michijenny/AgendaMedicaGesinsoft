@@ -48,7 +48,7 @@ public class VademecumController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Vademecum> actualizarVademecum(@PathVariable Long id, @RequestBody Vademecum v) {
+    public ResponseEntity<Vademecum> actualizarVademecum(@PathVariable Integer id, @RequestBody Vademecum v) {
         Vademecum vade = vaService.findById(id);
         if (vade == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -74,7 +74,7 @@ public class VademecumController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Vademecum> eliminarVademecum(@PathVariable Long id) {
+    public ResponseEntity<Vademecum> eliminarVademecum(@PathVariable Integer id) {
         vaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

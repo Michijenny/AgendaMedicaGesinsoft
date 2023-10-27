@@ -48,7 +48,7 @@ public class ImagenesController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Imagenes> actualizarImagen(@PathVariable Long id, @RequestBody Imagenes i) {
+    public ResponseEntity<Imagenes> actualizarImagen(@PathVariable Integer id, @RequestBody Imagenes i) {
         Imagenes ima = imagenService.findById(id);
         if (ima == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -68,7 +68,7 @@ public class ImagenesController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Imagenes> eliminarImagrn(@PathVariable Long id) {
+    public ResponseEntity<Imagenes> eliminarImagrn(@PathVariable Integer id) {
         imagenService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

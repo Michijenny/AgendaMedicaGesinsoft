@@ -4,9 +4,8 @@
  */
 package com.spring.AgendaMedica.controller;
 
-import com.spring.AgendaMedica.modelo.ObraSocial;
-import com.spring.AgendaMedica.service.ObraSocialServicelmpl;
-import com.spring.AgendaMedica.servicios.ObraSocialService;
+import com.spring.AgendaMedica.modelo.Odontologia;
+import com.spring.AgendaMedica.servicios.OdontologiaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -26,42 +25,44 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
-@RequestMapping("/api/obrasocial")
-public class ObraSocialController {
+@RequestMapping("/api/odontologia")
+public class OdontologiaController {
 
     @Autowired
-    ObraSocialService obraService;
+    OdontologiaService odontologiaService;
 
     @GetMapping("/listar")
-    public ResponseEntity<List<ObraSocial>> listarObraSocial() {
-        return new ResponseEntity<>(obraService.findByAll(),
+    public ResponseEntity<List<Odontologia>> listarOdontologia() {
+        return new ResponseEntity<>(odontologiaService.findByAll(),
                 HttpStatus.OK);
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<ObraSocial> crearObraSocial(
-            @RequestBody ObraSocial o) {
-        return new ResponseEntity<>(obraService.save(o),
+    public ResponseEntity<Odontologia> crearOdontologia(
+            @RequestBody Odontologia o) {
+        return new ResponseEntity<>(odontologiaService.save(o),
                 HttpStatus.CREATED);
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<ObraSocial> actualizarObraSocial(@PathVariable Long id, @RequestBody ObraSocial o) {
-        ObraSocial obra = obraService.findById(id);
-        if (obra == null) {
+    public ResponseEntity<Odontologia> actualizarOdontologia(@PathVariable Integer id, @RequestBody Odontologia o) {
+        Odontologia odon = odontologiaService.findById(id);
+        if (odon == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                obra.setNombre(o.getNombre());
-                obra.setDirector(o.getDirector());
-                obra.setSecretario(o.getSecretario());
-                obra.setSecretario(o.getSecretario());
-                obra.setTesorero(o.getTesorero());
-                obra.setAcesortecnico(o.getAcesortecnico());
-                obra.setAnotaciones(o.getAnotaciones());
-                return new ResponseEntity<>(obraService.save(o), HttpStatus.OK);
+                odon.setFecha(o.getFecha());
+                odon.setNumerodiente(o.getNumerodiente());
+                odon.setMarca(o.getMarca());
+                odon.setReferecia1(o.getReferecia1());
+                odon.setReferencia2(o.getReferencia2());
+                odon.setReferencia3(o.getReferencia3());
+                odon.setReferencia4(o.getReferencia4());
+                odon.setReferencia5(o.getReferencia5());
+                odon.setAnotaciones(o.getAnotaciones());
+                return new ResponseEntity<>(odontologiaService.save(o), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
@@ -69,8 +70,8 @@ public class ObraSocialController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<ObraSocial> eliminarObraSocial(@PathVariable Long id) {
-        obraService.delete(id);
+    public ResponseEntity<Odontologia> eliminarOdontologia(@PathVariable Integer id) {
+        odontologiaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

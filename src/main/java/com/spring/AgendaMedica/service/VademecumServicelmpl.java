@@ -16,13 +16,13 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class VademecumServicelmpl extends GenericServiceImpl<Vademecum, Long> implements VademecumService {
+public class VademecumServicelmpl extends GenericServiceImpl<Vademecum, Integer> implements VademecumService {
 
     @Autowired
     VademecumRepository vademecumRepository;
 
     @Override
-    public CrudRepository<Vademecum, Long> getDao() {
+    public CrudRepository<Vademecum, Integer> getDao() {
         return vademecumRepository;
     }
 }

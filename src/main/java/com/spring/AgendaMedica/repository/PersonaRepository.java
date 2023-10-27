@@ -6,11 +6,13 @@ package com.spring.AgendaMedica.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import com.spring.AgendaMedica.modelo.Persona;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author enriq
  */
-public interface PersonaRepository extends CrudRepository<Persona, Long> {
+@Repository
+public interface PersonaRepository extends CrudRepository<Persona, Integer> {
 
 }

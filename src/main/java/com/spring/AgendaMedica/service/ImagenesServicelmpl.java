@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class ImagenesServicelmpl extends GenericServiceImpl<Imagenes, Long> implements ImagenesService {
+public class ImagenesServicelmpl extends GenericServiceImpl<Imagenes, Integer> implements ImagenesService {
 
     @Autowired
     ImagenesRepository imagenesRepository;
 
     @Override
-    public CrudRepository<Imagenes, Long> getDao() {
+    public CrudRepository<Imagenes, Integer> getDao() {
         return imagenesRepository;
     }
 

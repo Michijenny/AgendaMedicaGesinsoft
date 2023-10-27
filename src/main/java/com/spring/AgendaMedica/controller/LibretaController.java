@@ -49,7 +49,7 @@ public class LibretaController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Libreta> actualizarlibreta(@PathVariable Long id, @RequestBody Libreta l) {
+    public ResponseEntity<Libreta> actualizarlibreta(@PathVariable Integer id, @RequestBody Libreta l) {
         Libreta libre = libretaService.findById(id);
         if (libre == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -70,7 +70,7 @@ public class LibretaController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Libreta> eliminarLibreta(@PathVariable Long id) {
+    public ResponseEntity<Libreta> eliminarLibreta(@PathVariable Integer id) {
         libretaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -6,11 +6,13 @@ package com.spring.AgendaMedica.repository;
 
 import com.spring.AgendaMedica.modelo.Vademecum;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author enriq
  */
-public interface VademecumRepository extends JpaRepository<Vademecum, Long> {
+@Repository
+public interface VademecumRepository extends JpaRepository<Vademecum, Integer> {
 
 }

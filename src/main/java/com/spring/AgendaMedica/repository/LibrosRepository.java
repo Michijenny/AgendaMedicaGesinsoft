@@ -6,11 +6,13 @@ package com.spring.AgendaMedica.repository;
 
 import com.spring.AgendaMedica.modelo.Libros;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author enriq
  */
-public interface LibrosRepository extends JpaRepository<Libros, Long> {
+@Repository
+public interface LibrosRepository extends JpaRepository<Libros, Integer> {
 
 }

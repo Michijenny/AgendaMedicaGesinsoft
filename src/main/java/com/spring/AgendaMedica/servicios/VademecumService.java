@@ -11,6 +11,6 @@ import com.spring.AgendaMedica.service.GenericService;
  *
  * @author ASUS ROG
  */
-public interface VademecumService extends GenericService<Vademecum, Long>{
+public interface VademecumService extends GenericService<Vademecum, Integer>{
     
 }

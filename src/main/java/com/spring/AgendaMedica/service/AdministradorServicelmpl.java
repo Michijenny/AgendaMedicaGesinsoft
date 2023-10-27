@@ -6,6 +6,8 @@ package com.spring.AgendaMedica.service;
 import com.spring.AgendaMedica.modelo.Administrador;
 import com.spring.AgendaMedica.repository.AdministradorRepository;
 import com.spring.AgendaMedica.servicios.AdministradorService;
+import jakarta.transaction.Transactional;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -15,14 +17,35 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class AdministradorServicelmpl extends GenericServiceImpl<Administrador, Long> implements AdministradorService{
+@Transactional
+public class AdministradorServicelmpl extends GenericServiceImpl<Administrador, Integer> implements AdministradorService{
     
     @Autowired
     AdministradorRepository administradorRepositoy;
 
     @Override
-    public CrudRepository<Administrador, Long> getDao() {
+    public CrudRepository<Administrador, Integer> getDao() {
         return administradorRepositoy;
     }
+    
+    //METODOS PARA VERIFICAR QUE NOMBRE DEL USUARIO SEA UNICO
+    
+//    public Optional <Administrador> getByNombreAdministrador (String nombread){
+//        return administradorRepositoy.NombreAdministrador(nombread);
+//    }
+//    
+//    public boolean existeUsuario (String nombreUsuario){
+//        return administradorRepositoy.existeAdmin(nombreUsuario);
+//    }
+    
+    //METODO PARA GUARDAR EL USUARIO DEL ADMIN
+    
+    public void guardar (Administrador administrador){
+        administradorRepositoy.save(administrador);
+    }
+    
+    
+    
+    
 
 }

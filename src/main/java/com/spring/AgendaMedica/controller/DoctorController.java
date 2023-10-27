@@ -48,7 +48,7 @@ public class DoctorController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Doctor> actualizarDoctor(@PathVariable Long id, @RequestBody Doctor d) {
+    public ResponseEntity<Doctor> actualizarDoctor(@PathVariable Integer id, @RequestBody Doctor d) {
         Doctor doc = doctorService.findById(id);
         if (doc == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -76,7 +76,7 @@ public class DoctorController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Doctor> eliminarDoctor(@PathVariable Long id) {
+    public ResponseEntity<Doctor> eliminarDoctor(@PathVariable Integer id) {
         doctorService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

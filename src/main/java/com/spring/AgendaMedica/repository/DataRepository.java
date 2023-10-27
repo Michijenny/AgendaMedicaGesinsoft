@@ -4,13 +4,15 @@
  */
 package com.spring.AgendaMedica.repository;
 
-import com.spring.AgendaMedica.modelo.Data1;
+import com.spring.AgendaMedica.modelo.Datas;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author enriq
  */
-public interface DataRepository extends JpaRepository<Data1, Long> {
+@Repository
+public interface DataRepository extends JpaRepository<Datas, Integer> {
 
 }

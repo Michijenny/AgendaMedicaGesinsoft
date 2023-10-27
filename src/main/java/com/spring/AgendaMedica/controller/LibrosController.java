@@ -48,7 +48,7 @@ public class LibrosController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Libros> actualizarLibros(@PathVariable Long id, @RequestBody Libros l) {
+    public ResponseEntity<Libros> actualizarLibros(@PathVariable Integer id, @RequestBody Libros l) {
         Libros lib = libroService.findById(id);
         if (lib == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -72,7 +72,7 @@ public class LibrosController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Libros> eliminarLibros(@PathVariable Long id) {
+    public ResponseEntity<Libros> eliminarLibros(@PathVariable Integer id) {
         libroService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

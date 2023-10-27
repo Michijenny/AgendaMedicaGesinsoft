@@ -4,9 +4,10 @@
  */
 package com.spring.AgendaMedica.service;
 
-import com.spring.AgendaMedica.modelo.Proveedor;
-import com.spring.AgendaMedica.repository.ProveedorRepository;
-import com.spring.AgendaMedica.servicios.ProveedorService;
+import java.io.Serializable;
+import com.spring.AgendaMedica.repository.AntropometriaRepository;
+import com.spring.AgendaMedica.modelo.Antropometria;
+import com.spring.AgendaMedica.servicios.AntropometriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -16,14 +17,14 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class ProveedorServicelmpl extends GenericServiceImpl<Proveedor, Long> implements ProveedorService {
+public class AntropometriaServicelmpl extends GenericServiceImpl<Antropometria, Integer> implements AntropometriaService {
 
     @Autowired
-    ProveedorRepository proveedorRepository;
+    AntropometriaRepository antropometriaRepository;
 
     @Override
-    public CrudRepository<Proveedor, Long> getDao() {
-        return proveedorRepository;
+    public CrudRepository<Antropometria, Integer> getDao() {
+        return antropometriaRepository;
     }
 
 }

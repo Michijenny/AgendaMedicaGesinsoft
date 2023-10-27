@@ -48,7 +48,7 @@ public class HistoriasController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Historias> actualizarAdministrador(@PathVariable Long id, @RequestBody Historias h) {
+    public ResponseEntity<Historias> actualizarAdministrador(@PathVariable Integer id, @RequestBody Historias h) {
         Historias his = historiaService.findById(id);
         if (his == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -66,7 +66,7 @@ public class HistoriasController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Historias> eliminarHistoria(@PathVariable Long id) {
+    public ResponseEntity<Historias> eliminarHistoria(@PathVariable Integer id) {
         historiaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

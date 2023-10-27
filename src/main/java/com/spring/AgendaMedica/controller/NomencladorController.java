@@ -48,7 +48,7 @@ public class NomencladorController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Nomenclador> actualizarNomenclador(@PathVariable Long id, @RequestBody Nomenclador n) {
+    public ResponseEntity<Nomenclador> actualizarNomenclador(@PathVariable Integer id, @RequestBody Nomenclador n) {
         Nomenclador nom = nomenService.findById(id);
         if (nom == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -64,7 +64,7 @@ public class NomencladorController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Nomenclador> eliminarNomenclador(@PathVariable Long id) {
+    public ResponseEntity<Nomenclador> eliminarNomenclador(@PathVariable Integer id) {
         nomenService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

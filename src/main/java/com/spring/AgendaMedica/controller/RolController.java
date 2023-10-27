@@ -48,13 +48,13 @@ public class RolController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Rol> actualizarRol(@PathVariable Long id, @RequestBody Rol r) {
+    public ResponseEntity<Rol> actualizarRol(@PathVariable Integer id, @RequestBody Rol r) {
         Rol rol = rolService.findById(id);
         if (rol == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                rol.setNombre(r.getNombre());
+                rol.setRolNombre(r.getRolNombre());
                 return new ResponseEntity<>(rolService.save(r), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -63,7 +63,7 @@ public class RolController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Rol> eliminarRol(@PathVariable Long id) {
+    public ResponseEntity<Rol> eliminarRol(@PathVariable Integer id) {
         rolService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

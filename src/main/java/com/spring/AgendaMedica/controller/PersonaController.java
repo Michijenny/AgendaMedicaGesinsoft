@@ -48,7 +48,7 @@ public class PersonaController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Persona> actualizarPersona(@PathVariable Long id, @RequestBody Persona p) {
+    public ResponseEntity<Persona> actualizarPersona(@PathVariable Integer id, @RequestBody Persona p) {
         Persona per = perService.findById(id);
         if (per == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -71,7 +71,7 @@ public class PersonaController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Persona> eliminarAdministrador(@PathVariable Long id) {
+    public ResponseEntity<Persona> eliminarAdministrador(@PathVariable Integer id) {
         perService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

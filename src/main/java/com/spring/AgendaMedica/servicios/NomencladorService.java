@@ -11,6 +11,6 @@ import com.spring.AgendaMedica.service.GenericService;
  *
  * @author ASUS ROG
  */
-public interface NomencladorService extends GenericService<Nomenclador, Long>{
+public interface NomencladorService extends GenericService<Nomenclador, Integer>{
     
 }

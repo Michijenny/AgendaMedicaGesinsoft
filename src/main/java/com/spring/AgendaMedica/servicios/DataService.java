@@ -4,13 +4,13 @@
  */
 package com.spring.AgendaMedica.servicios;
 
-import com.spring.AgendaMedica.modelo.Data1;
+import com.spring.AgendaMedica.modelo.Datas;
 import com.spring.AgendaMedica.service.GenericService;
 
 /**
  *
  * @author ASUS ROG
  */
-public interface DataService extends GenericService<Data1, Long>{
+public interface DataService extends GenericService<Datas, Integer>{
     
 }

@@ -4,9 +4,8 @@
  */
 package com.spring.AgendaMedica.controller;
 
-import com.spring.AgendaMedica.modelo.Proveedor;
-import com.spring.AgendaMedica.service.ProveedorServicelmpl;
-import com.spring.AgendaMedica.servicios.ProveedorService;
+import com.spring.AgendaMedica.modelo.Oftalmologia;
+import com.spring.AgendaMedica.servicios.OftalmologiaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -26,41 +25,40 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
-@RequestMapping("/api/proveedor")
-public class ProveedorController {
+@RequestMapping("/api/oftalmologia")
+public class OftalmologiaController {
 
     @Autowired
-    ProveedorService proveedorService;
+    OftalmologiaService oftalmologiaService;
 
     @GetMapping("/listar")
-    public ResponseEntity<List<Proveedor>> listarProveedor() {
-        return new ResponseEntity<>(proveedorService.findByAll(),
+    public ResponseEntity<List<Oftalmologia>> listarOftalmologia() {
+        return new ResponseEntity<>(oftalmologiaService.findByAll(),
                 HttpStatus.OK);
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<Proveedor> crearProveedor(
-            @RequestBody Proveedor p) {
-        return new ResponseEntity<>(proveedorService.save(p),
+    public ResponseEntity<Oftalmologia> crearOftalmologia(
+            @RequestBody Oftalmologia a) {
+        return new ResponseEntity<>(oftalmologiaService.save(a),
                 HttpStatus.CREATED);
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Proveedor> actualizarProveedor(@PathVariable Long id, @RequestBody Proveedor p) {
-        Proveedor pro = proveedorService.findById(id);
-        if (pro == null) {
+    public ResponseEntity<Oftalmologia> actualizarOftalmologia(@PathVariable Integer id, @RequestBody Oftalmologia o) {
+        Oftalmologia oft = oftalmologiaService.findById(id);
+        if (oft == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                pro.setServicio(p.getServicio());
-                pro.setTelefono1(p.getTelefono1());
-                pro.setTelefono2(p.getTelefono2());
-                pro.setSitioweb(p.getSitioweb());
-                pro.setDireccion(p.getDireccion());
-                pro.setAnotaciones(p.getAnotaciones());
-                return new ResponseEntity<>(proveedorService.save(p), HttpStatus.OK);
+                oft.setFecha(o.getFecha());
+                oft.setResultado(o.getResultado());
+                oft.setOjoizquierdo(o.getOjoizquierdo());
+                oft.setOjoderecho(o.getOjoderecho());
+                oft.setAnotaciones(o.getAnotaciones());
+                return new ResponseEntity<>(oftalmologiaService.save(o), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
@@ -68,8 +66,8 @@ public class ProveedorController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Proveedor> eliminarProveedor(@PathVariable Long id) {
-        proveedorService.delete(id);
+    public ResponseEntity<Oftalmologia> eliminarOftalmologia(@PathVariable Integer id) {
+        oftalmologiaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

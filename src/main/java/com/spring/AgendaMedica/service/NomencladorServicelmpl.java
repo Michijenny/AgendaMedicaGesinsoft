@@ -16,13 +16,13 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class NomencladorServicelmpl extends GenericServiceImpl<Nomenclador, Long> implements NomencladorService {
+public class NomencladorServicelmpl extends GenericServiceImpl<Nomenclador, Integer> implements NomencladorService {
 
     @Autowired
     NomencladorRepository nomencladorRepository;
 
     @Override
-    public CrudRepository<Nomenclador, Long> getDao() {
+    public CrudRepository<Nomenclador, Integer> getDao() {
         return nomencladorRepository;
     }
 

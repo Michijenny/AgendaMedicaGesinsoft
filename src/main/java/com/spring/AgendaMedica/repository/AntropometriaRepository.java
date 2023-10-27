@@ -4,13 +4,15 @@
  */
 package com.spring.AgendaMedica.repository;
 
-import com.spring.AgendaMedica.modelo.ObraSocial;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.spring.AgendaMedica.modelo.Antropometria;
+
 /**
  *
  * @author enriq
  */
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface ObraSocialRepository extends JpaRepository<ObraSocial, Long> {
+@Repository
+public interface AntropometriaRepository extends JpaRepository<Antropometria, Integer> {
 
 }

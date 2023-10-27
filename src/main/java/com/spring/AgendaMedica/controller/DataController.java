@@ -4,7 +4,7 @@
  */
 package com.spring.AgendaMedica.controller;
 
-import com.spring.AgendaMedica.modelo.Data1;
+import com.spring.AgendaMedica.modelo.Datas;
 import com.spring.AgendaMedica.service.DataServicelmpl;
 import com.spring.AgendaMedica.servicios.DataService;
 import java.util.List;
@@ -35,21 +35,21 @@ public class DataController {
     DataService dataService;
 
     @GetMapping("/listar")
-    public ResponseEntity<List<Data1>> listarData() {
+    public ResponseEntity<List<Datas>> listarData() {
         return new ResponseEntity<>(dataService.findByAll(),
                 HttpStatus.OK);
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<Data1> crearData(
-            @RequestBody Data1 d) {
+    public ResponseEntity<Datas> crearData(
+            @RequestBody Datas d) {
         return new ResponseEntity<>(dataService.save(d),
                  HttpStatus.CREATED);
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Data1> actualizarData(@PathVariable Long id, @RequestBody Data1 d) {
-        Data1 data = dataService.findById(id);
+    public ResponseEntity<Datas> actualizarData(@PathVariable Integer id, @RequestBody Datas d) {
+        Datas data = dataService.findById(id);
         if (data == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -65,7 +65,7 @@ public class DataController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Data1> eliminarDat(@PathVariable Long id) {
+    public ResponseEntity<Datas> eliminarDat(@PathVariable Integer id) {
         dataService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

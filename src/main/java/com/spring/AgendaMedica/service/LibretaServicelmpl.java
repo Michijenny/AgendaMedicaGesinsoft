@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class LibretaServicelmpl extends GenericServiceImpl<Libreta, Long> implements LibretaService {
+public class LibretaServicelmpl extends GenericServiceImpl<Libreta, Integer> implements LibretaService {
 
     @Autowired
     LibretaRepository libretaRepository;
 
     @Override
-    public CrudRepository<Libreta, Long> getDao() {
+    public CrudRepository<Libreta, Integer> getDao() {
         return libretaRepository;
     }
 

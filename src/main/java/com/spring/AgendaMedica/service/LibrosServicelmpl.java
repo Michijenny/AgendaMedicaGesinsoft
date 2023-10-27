@@ -17,13 +17,13 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class LibrosServicelmpl extends GenericServiceImpl<Libros, Long> implements LibrosService {
+public class LibrosServicelmpl extends GenericServiceImpl<Libros, Integer> implements LibrosService {
 
     @Autowired
     LibrosRepository librosRepository;
 
     @Override
-    public CrudRepository<Libros, Long> getDao() {
+    public CrudRepository<Libros, Integer> getDao() {
         return librosRepository;
     }
 }
