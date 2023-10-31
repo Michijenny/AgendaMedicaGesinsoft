@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/doctor")
 public class DoctorController {
@@ -44,7 +44,7 @@ public class DoctorController {
     public ResponseEntity<Doctor> crearDoctor(
             @RequestBody Doctor d) {
         return new ResponseEntity<>(doctorService.save(d),
-                 HttpStatus.CREATED);
+                HttpStatus.CREATED);
     }
 
     @PutMapping("/actualizar/{id}")
@@ -66,8 +66,6 @@ public class DoctorController {
                 doc.setCfg(d.getCfg());
                 doc.setCfgsec(d.getCfgsec());
                 doc.setEmail(d.getEmail());
-                doc.setExtraAsister(d.getExtraAsister());
-                doc.setField(d.getField());
                 return new ResponseEntity<>(doctorService.save(d), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

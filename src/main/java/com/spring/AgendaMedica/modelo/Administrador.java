@@ -15,10 +15,14 @@ import lombok.Setter;
 import java.util.Set;
 import com.spring.AgendaMedica.modelo.Rol;
 import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import java.util.HashSet;
+import java.util.List;
 import org.antlr.v4.runtime.misc.NotNull;
 
 /**
@@ -35,30 +39,19 @@ public class Administrador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAdministrador;
-    private Integer idRol;
-    @Column (unique = true)
-    private String usuario;
-    @NotNull
-    private String password;
+    
+    //RELACION CON LA TABLA ADMINISTRADOR USUARIO 
+    /*@OneToMany(mappedBy = "administrador")
+    private List<Usuario> usuarios;*/
     
     
-    //RELACION 
-    @NotNull
-    @ManyToMany
-    @JoinTable (name ="usuariorol", joinColumns = @JoinColumn (name = "administradorid"),
-            inverseJoinColumns = @JoinColumn (name="rol_id") )
-    private Set <Rol> roles = new HashSet <>();
+       //RELACION CON LA TABLA ADMINISTRADOR USUARIO 
     
     
-    //CONTRUCTORES 
-    public Administrador (){
-        
-    }
-
-    public Administrador( String usuario, String password) {
-        this.usuario = usuario;
-        this.password = password;
-    }
+    
+    
+    
+    
 
     
     

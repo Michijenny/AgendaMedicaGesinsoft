@@ -79,13 +79,13 @@ public class Antropometria {
     private double ilioespinal;
     private double trocTipLat;
     private double pie;
-    private double anotaciones;
-    private double prescripciones;
+    private String anotaciones;
+    private String prescripciones;
 
     public Antropometria() {
     }
 
-    public Antropometria(Integer idAntropometria, Integer edad, double peso, double talla, double tronco, double dsuspino, double envergadura, double bicipital, double ileocristal, double supraespinal, double axilar, double abdominal, double tricipital, double subescapular, double pectoral, double gemelo, double muslofrontal, double humeral, double femoral, double biacromial, double biileocretideo, double toraxap, double muslo, double tobillo, double biliacodi, double muñeca, double toraxtrans, double cefalico, double torax, double antebrazo, double tobillo1, double cintura, double cuello, double bicipitalrel, double bicitalflex, double muslo1, double cadera, double muñeca1, double gemelo1, double abdomen, double acroestiloide, double medioestdact, double trocanterea, double tribiallateral, double tibMdMaleolar, double acroradial, double ilioespinal, double trocTipLat, double pie, double anotaciones, double prescripciones) {
+    public Antropometria(Integer idAntropometria, Integer edad, double peso, double talla, double tronco, double dsuspino, double envergadura, double bicipital, double ileocristal, double supraespinal, double axilar, double abdominal, double tricipital, double subescapular, double pectoral, double gemelo, double muslofrontal, double humeral, double femoral, double biacromial, double biileocretideo, double toraxap, double muslo, double tobillo, double biliacodi, double muñeca, double toraxtrans, double cefalico, double torax, double antebrazo, double tobillo1, double cintura, double cuello, double bicipitalrel, double bicitalflex, double muslo1, double cadera, double muñeca1, double gemelo1, double abdomen, double acroestiloide, double medioestdact, double trocanterea, double tribiallateral, double tibMdMaleolar, double acroradial, double ilioespinal, double trocTipLat, double pie, String anotaciones, String prescripciones) {
         this.idAntropometria = idAntropometria;
         this.edad = edad;
         this.peso = peso;
@@ -142,6 +142,6 @@ public class Antropometria {
     //RELACION DE MUCHOS A UNO ANTROPOMETRIA PACIENTE
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idPaciente", referencedColumnName ="idPaciente")
-    private Paciente paciente;
+    private Paciente idPaciente;
 
 }

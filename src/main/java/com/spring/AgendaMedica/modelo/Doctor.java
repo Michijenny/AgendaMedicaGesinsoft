@@ -31,7 +31,6 @@ public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDoctor;
-    private Integer idRol;
     @NotNull
     private String nombre;
     @NotNull
@@ -50,31 +49,12 @@ public class Doctor {
     private String cfgsec;
     @NotNull
     private String email;
-    private String extraAsister;
-    private String field;
 
-    //RELACION CON LA TABLA VADECATEG
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "idDoctor")
-//    private List <Vadecateg> listaCategoria;
-    //RELACION CON LA TABLA LIBROS
-//    @JsonIgnore
-//    @OneToMany (mappedBy = "idDotor")
-//    private List<Libros> listaLibros;
-    //RELACION CON LA TABLA DATA
-//    @JsonIgnore
-//    @OneToMany (mappedBy = "idMedico")
-//    private List <Data1> listaData;
-    //RELACION CON LA TABLA VADEMECUM
-//    @JsonIgnore
-//    @OneToMany (mappedBy = "idDoctor")
-//    private List <Vademecum> listaVade;
     public Doctor() {
     }
 
-    public Doctor(Integer idDoctor, Integer idRol, String nombre, String clavesecreta, String comentarios, String direccion, String especialidad, String telefono, String clave, String notaAuto, String nota, String comparte, String cfg, String cfgsec, String email, String extraAsister, String field) {
+    public Doctor(Integer idDoctor, Integer idRol, String nombre, String clavesecreta, String comentarios, String direccion, String especialidad, String telefono, String clave, String notaAuto, String nota, String comparte, String cfg, String cfgsec, String email) {
         this.idDoctor = idDoctor;
-        this.idRol = idRol;
         this.nombre = nombre;
         this.clavesecreta = clavesecreta;
         this.comentarios = comentarios;
@@ -88,8 +68,41 @@ public class Doctor {
         this.cfg = cfg;
         this.cfgsec = cfgsec;
         this.email = email;
-        this.extraAsister = extraAsister;
-        this.field = field;
+
     }
+
+    //RELACION CON LA TABLA DOCTOR - VADEMECUM}
+    @JsonIgnore
+    @OneToMany(mappedBy = "doctor")
+    private List<Vademecum> vademecum;
+
+    //RELACION CON LA TABLA DOCTOR - VADECATEG
+    @JsonIgnore
+    @OneToMany(mappedBy = "doctor")
+    private List<Vadecateg> vadecateg;
+
+    //RELACION CON LA TABLA DOCTOR - IMAGENES 
+    @JsonIgnore
+    @OneToMany(mappedBy = "idAutor")
+    private List<Imagenes> imagenes;
+
+    //RELACION LA TABLA DOCTOR - DATA
+    @JsonIgnore
+    @OneToMany(mappedBy = "idMedico")
+    private List<Datas> data;
+
+    //RELACION LA TABLA DOCTOR - IMAGENES
+    @JsonIgnore
+    @OneToMany(mappedBy = "idDoctor")
+    private List<Libreta> libreta;
+    
+    //RELACION CON LA TABLA DOCTOR- LIBROS
+    @JsonIgnore
+    @OneToMany(mappedBy = "idDoctor")
+    private List<Libros> libro;
+    
+    //RELACION CON LA TABLA DOCTOR - USUARIO
+    /*@OneToMany(mappedBy = "doctor")
+    private List<Usuario> usuarios;*/
 
 }

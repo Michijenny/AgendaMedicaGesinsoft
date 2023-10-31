@@ -54,7 +54,6 @@ public class VademecumController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                vade.setIdDoctor(v.getIdDoctor());
                 vade.setCompartido(v.getCompartido());
                 vade.setLaboratorio(v.getLaboratorio());
                 vade.setMedicamento(v.getMedicamento());
@@ -62,7 +61,6 @@ public class VademecumController {
                 vade.setIndicaciones(v.getIndicaciones());
                 vade.setContraindicaciones(v.getContraindicaciones());
                 vade.setPosologia(v.getPosologia());
-                vade.setIdCategoria(v.getIdCategoria());
                 vade.setEquivalencias(v.getEquivalencias());
                 vade.setAnotaciones(v.getAnotaciones());
                 vade.setStock(v.getStock());

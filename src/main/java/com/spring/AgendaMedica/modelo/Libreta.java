@@ -5,9 +5,12 @@
 package com.spring.AgendaMedica.modelo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.Getter;
@@ -54,5 +57,10 @@ public class Libreta {
         this.direccion = direccion;
         this.notas = notas;
     }
+    
+    //RELACION LIBRETA - DOCTOR 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    private Doctor idDoctor;
 
 }

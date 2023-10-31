@@ -7,9 +7,12 @@ package com.spring.AgendaMedica.modelo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
@@ -33,31 +36,28 @@ public class Vadecateg {
     private Integer idCategoria;
     @Column (unique = true)
     private String titulo;
-    private Long idDoctor;
     private String tipo;
     
-    
-    
-    
-    
-    
-    
-    //RELACION CON LA TABLA VADEMECUM
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "idCategoria")
-//    private List <Vademecum> listaVademecum;
-
     
     //CONSTRUCTORES
     public Vadecateg() {
     }
 
-    public Vadecateg(Integer idCategoria, String titulo, Long idDoctor, String tipo) {
+    public Vadecateg(Integer idCategoria, String titulo, String tipo) {
         this.idCategoria = idCategoria;
         this.titulo = titulo;
-        this.idDoctor = idDoctor;
         this.tipo = tipo;
     }
+    
+    //RELACION CON LA TABLA VADECATEG/ DOCTOR 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    private Doctor doctor;
+    
+    //RELACION TABLA VADECATEG - VADEMECUM
+    @JsonIgnore
+    @OneToMany(mappedBy = "vadecateg")
+    private List <Vademecum> vademecum;
     
     
 }

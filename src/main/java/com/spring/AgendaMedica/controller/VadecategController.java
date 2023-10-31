@@ -55,7 +55,6 @@ public class VadecategController {
         } else {
             try {
                 vad.setTitulo(v.getTitulo());
-                vad.setIdDoctor(v.getIdDoctor());
                 vad.setTipo(v.getTipo());
                 return new ResponseEntity<>(vadeService.save(v), HttpStatus.OK);
             } catch (DataAccessException e) {

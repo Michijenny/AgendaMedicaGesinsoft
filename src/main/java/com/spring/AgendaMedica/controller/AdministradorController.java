@@ -54,9 +54,7 @@ public class AdministradorController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                admin.setIdRol(a.getIdRol());
-                admin.setUsuario(a.getUsuario());
-                admin.setPassword(a.getPassword());
+               
                 return new ResponseEntity<>(administradorService.save(a), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

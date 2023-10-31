@@ -6,9 +6,12 @@ package com.spring.AgendaMedica.modelo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.Getter;
@@ -36,7 +39,6 @@ public class Libros {
     private String estado;
     private String keywords;
     private String notas;
-    private Long idDoctor;
     private String compartido;
     private String digital;
 
@@ -52,9 +54,13 @@ public class Libros {
         this.estado = estado;
         this.keywords = keywords;
         this.notas = notas;
-        this.idDoctor = idDoctor;
         this.compartido = compartido;
         this.digital = digital;
     }
+    
+    //RELACION CON LA TABLA LIBROS - DOCTOR
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    private Doctor idDoctor;
 
 }

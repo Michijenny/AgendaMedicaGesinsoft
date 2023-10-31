@@ -70,14 +70,14 @@ public class Paciente {
     private String campoCfg3;
     private String tipodocumento;
     private String abrir;
-    private String field;
+    private String genero;
     
 
 
     public Paciente() {
     }
 
-    public Paciente(Integer idPaciente, Integer idRol, String apellido, String nombre, String documento, Date fechanacimiento, String grupo, String sexo, String direccion, String cp, String obra, String afiliado, String telefono1, String telefono2, String telefono3, String clinicos, String diagnostico, String cormobilidades, String familiar, String comentarios, String extra1, String extra2, String extra3, String extra4, String extra5, String extra6, String extra7, String extra8, String extra9, String extra10, String civil, Long idDoctor, String campoCfg1, String campoCfg2, String campoCfg3, String tipodocumento, String abrir, String field) {
+    public Paciente(Integer idPaciente, Integer idRol, String apellido, String nombre, String documento, Date fechanacimiento, String grupo, String sexo, String direccion, String cp, String obra, String afiliado, String telefono1, String telefono2, String telefono3, String clinicos, String diagnostico, String cormobilidades, String familiar, String comentarios, String extra1, String extra2, String extra3, String extra4, String extra5, String extra6, String extra7, String extra8, String extra9, String extra10, String civil, Long idDoctor, String campoCfg1, String campoCfg2, String campoCfg3, String tipodocumento, String abrir, String genero) {
         this.idPaciente = idPaciente;
         this.idRol = idRol;
         this.apellido = apellido;
@@ -115,31 +115,38 @@ public class Paciente {
         this.campoCfg3 = campoCfg3;
         this.tipodocumento = tipodocumento;
         this.abrir = abrir;
-        this.field = field;
+        this.genero = genero;
     }
     
     
     //RELACION CON LA TABLA ANTROPOMETRIA
     @JsonIgnore
-    @OneToMany (mappedBy = "paciente")
+    @OneToMany (mappedBy = "idPaciente")
     private List<Antropometria> antropometria;
     
     
     //RELACION CON LA TABLA ARCHIVOS
     @JsonIgnore
-    @OneToMany(mappedBy = "paciente")
+    @OneToMany(mappedBy = "idPaciente")
     private List <Archivos> archivo;
     
     //RELACION CON LA TABLA ODONTOLOGIA
     @JsonIgnore
-    @OneToMany(mappedBy = "paciente")
+    @OneToMany(mappedBy = "idPaciente")
     private List <Odontologia> odontologia;
     
     //RELACION CON LA TABLA OFTALMOLOGIA
     @JsonIgnore
-    @OneToMany(mappedBy = "paciente")
+    @OneToMany(mappedBy = "idPaciente")
     private List <Oftalmologia> oftalmologia;
     
+    //RELACION CON LA TABLA PACIENTE / IMAGENES
+    @JsonIgnore
+    @OneToMany(mappedBy = "idPaciente")
+    private List <Imagenes> imagenes;
     
+    //RELACION CON LA TABLA PACIENTE USUARIO
+    /*@OneToMany(mappedBy = "paciente")
+    private List<Usuario> usuarios;*/
 
 }

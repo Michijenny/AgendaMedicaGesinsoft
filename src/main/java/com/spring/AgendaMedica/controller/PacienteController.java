@@ -89,7 +89,7 @@ public class PacienteController {
                 pac.setCampoCfg3(p.getCampoCfg3());
                 pac.setTipodocumento(p.getTipodocumento());
                 pac.setAbrir(p.getAbrir());
-                pac.setField(p.getField());
+                pac.setGenero(p.getGenero());
                 return new ResponseEntity<>(pacienteService.save(p), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

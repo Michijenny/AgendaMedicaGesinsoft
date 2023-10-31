@@ -59,7 +59,7 @@ public class Odontologia {
     //RELACION CON LA TABLA PACIENTE
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idPaciente", referencedColumnName ="idPaciente")
-    private Paciente paciente;
+    private Paciente idPaciente;
 
     
     

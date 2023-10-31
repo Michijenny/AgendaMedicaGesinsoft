@@ -4,6 +4,7 @@
  */
 package com.spring.AgendaMedica.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -69,6 +70,22 @@ public class Usuario {
     public Usuario() {
     }
     
+    //RELACION TABLA USUARIO - ADMINISTRADOR
+   /* @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idAdministrador", referencedColumnName ="idAdministrador")
+    private Administrador administrador;
+    
+    
+    //RELACION TABLA USUARIO - PACIENTE
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idPaciente", referencedColumnName ="idPaciente")
+    private Paciente paciente;
+    
+    
+    //RELACION TABLA USUARIO - DOCTOR
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    private Doctor doctor;*/
     
     
     

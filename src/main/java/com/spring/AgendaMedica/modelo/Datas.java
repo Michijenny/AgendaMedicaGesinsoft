@@ -5,9 +5,12 @@
 package com.spring.AgendaMedica.modelo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.Getter;
@@ -32,16 +35,22 @@ public class Datas {
     private String variable;
     @Size(max = 300, message = "El valor no puede contener mas de 300 caracteres")
     private String valor;
-    private Long idMedico;
+  
 
-    public Datas(Integer idData, String variable, String valor, Long idMedico) {
+    public Datas(Integer idData, String variable, String valor) {
         this.idData = idData;
         this.variable = variable;
         this.valor = valor;
-        this.idMedico = idMedico;
+        
     }
 
     public Datas() {
     }
+    
+    //RELACION DE LA TABLA DATA CON EL DOCTOR 
+    //RELACION TABLA IMAGENES - PACIENTE
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    private Doctor idMedico;
 
 }
