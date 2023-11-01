@@ -52,4 +52,9 @@ public class Oftalmologia {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idPaciente", referencedColumnName ="idPaciente")
     private Paciente idPaciente;
+    
+    //RELACION CON LA TABLA DOCTOR
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    private Doctor idDoctor;
 }

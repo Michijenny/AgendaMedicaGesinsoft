@@ -105,4 +105,19 @@ public class Doctor {
     /*@OneToMany(mappedBy = "doctor")
     private List<Usuario> usuarios;*/
 
+    
+    //RELACION CON LA TABLA DOCTOR - ODONTOLOGIA
+    @JsonIgnore
+    @OneToMany(mappedBy = "idDoctor")
+    private List<Odontologia> odontologias;
+    
+    //RELACION CON LA TABLA DOCTOR - OFTALMOLOGIA
+    @JsonIgnore
+    @OneToMany(mappedBy = "idDoctor")
+    private List<Oftalmologia> oftalmologias;
+    
+    //RELACION CON LA TABLA DOCTOR - ANTROPOMETRIA
+    @JsonIgnore
+    @OneToMany(mappedBy = "idDoctor")
+    private List<Antropometria> antropometrias;
 }

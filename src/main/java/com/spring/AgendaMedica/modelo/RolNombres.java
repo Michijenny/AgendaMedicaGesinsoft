@@ -9,5 +9,5 @@ package com.spring.AgendaMedica.modelo;
  * @author enriq
  */
 public enum RolNombres {
-    ROL_ADMIN, ROL_USER, ROL_DOCTOR
+    ROL_ADMIN, ROL_PACIENTE, ROL_DOCTOR
 }

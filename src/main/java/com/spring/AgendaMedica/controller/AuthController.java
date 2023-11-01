@@ -93,7 +93,7 @@ public class AuthController {
         user.setContraseña(passwordEncoder.encode(user.getContraseña()));
         List<Rol> addRol = new ArrayList<>();
         if(user.getRoles().isEmpty()){
-           addRol.add(rolService.findByRolNombre(RolNombres.ROL_USER).get());
+           addRol.add(rolService.findByRolNombre(RolNombres.ROL_PACIENTE).get());
            user.setRoles(addRol);
         }
         userService.save(user);

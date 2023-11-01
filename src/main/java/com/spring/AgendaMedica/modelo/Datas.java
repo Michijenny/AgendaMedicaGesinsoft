@@ -31,9 +31,7 @@ public class Datas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idData;
-    @Size(max = 100, message = "La variable no puede contener mas de 100 caracteres")
     private String variable;
-    @Size(max = 300, message = "El valor no puede contener mas de 300 caracteres")
     private String valor;
   
 
