@@ -31,13 +31,13 @@ public class Datas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idData;
-    private String variable;
+    private String variables;
     private String valor;
   
 
     public Datas(Integer idData, String variable, String valor) {
         this.idData = idData;
-        this.variable = variable;
+        this.variables = variable;
         this.valor = valor;
         
     }

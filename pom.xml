@@ -61,11 +61,7 @@
                         </exclusions>
                     </dependency>
                     
-                    <dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.0.2</version>
-		</dependency>
+                   
 
               <!-- JWT SECURITY -->
 		<dependency>
@@ -85,7 +81,24 @@
 		</dependency>
                 
                 
+                  <!-- Swagger 2 -->
+                <dependency>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-annotations</artifactId>
+                    <version>1.5.20</version>
+                    <type>jar</type>
+                </dependency>
                 
+                <dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+                
+                  
+                     
+              
+                    
 	</dependencies>
 
 	<build>
