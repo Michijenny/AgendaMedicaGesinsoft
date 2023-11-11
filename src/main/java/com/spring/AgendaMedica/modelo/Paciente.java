@@ -148,5 +148,7 @@ public class Paciente {
     //RELACION CON LA TABLA PACIENTE USUARIO
     /*@OneToMany(mappedBy = "paciente")
     private List<Usuario> usuarios;*/
-
+    
+    
+        
 }

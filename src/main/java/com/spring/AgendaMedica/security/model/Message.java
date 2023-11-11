@@ -1,4 +1,4 @@
-package com.proyecto.faan.security.model;
+package com.spring.AgendaMedica.security.model;
 
 import lombok.Getter;
 import lombok.Setter;

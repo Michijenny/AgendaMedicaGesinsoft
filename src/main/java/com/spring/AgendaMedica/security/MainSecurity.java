@@ -26,10 +26,12 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity (prePostEnabled = true)
 public class MainSecurity {
 
     private UserDetailsServiceImpl userDetailsService;
 
+    @Autowired
     private JwtEntryPoint jwtEntryPoint;
 
     @Autowired

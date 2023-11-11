@@ -36,9 +36,7 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRol;
     
-    @NotEmpty
-    @Enumerated(EnumType.STRING)
-    private RolNombres rolNombre;
+    private String rolNombre;
     
     //RELACION 
     @ManyToMany (mappedBy = "roles")

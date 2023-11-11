@@ -1,5 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+/* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.spring.AgendaMedica.modelo;
@@ -33,19 +32,32 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPersona;
     @Column (unique = true)
-    private String cedula;
-    private String primerNombre;
-    private String segundoNombre;
-    private String primerApellido;
-    private String segundoApellido;
-    private String genero;
+    private String documento;
+    private String nombres;
+    private String apellidos;
     private Date fechanacimiento;   
-    private String correo;
+    private String email;
     private String direccion;
     private String telefono;
 
-    
+    public Persona() {
+    }
 
+    public Persona(Integer idPersona, String documento, String nombres, String apellidos, Date fechanacimiento, String email, String direccion, String telefono, List<Usuario> usuario) {
+        this.idPersona = idPersona;
+        this.documento = documento;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.fechanacimiento = fechanacimiento;
+        this.email = email;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.usuario = usuario;
+    }
+    
+    
+    
+    //RELACION PERSONA USUARIO
     @JsonIgnore
     @OneToMany (mappedBy = "persona")
     private List<Usuario> usuario;

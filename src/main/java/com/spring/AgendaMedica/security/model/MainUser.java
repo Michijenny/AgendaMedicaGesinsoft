@@ -13,10 +13,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
+@Getter
+@Setter
 @AllArgsConstructor
 public class MainUser implements UserDetails {
+    private Integer idUsuario;
     private String username;
     private String password;
+    private Boolean estado;
     private Collection<? extends GrantedAuthority> authorities;
 
     /*public static MainUser build(Usuario user){
@@ -24,9 +28,28 @@ public class MainUser implements UserDetails {
         return new MainUser(user.getNombreUsuario(), user.getContraseña(), authorities);
     }*/
     
-    public static MainUser build(Usuario user){
+  /* public static MainUser build(Usuario user){
         List<GrantedAuthority> authorities = user.getRoles().stream().map(role-> new SimpleGrantedAuthority(role.getRolNombre().name())).collect(Collectors.toList());
-        return new MainUser(user.getNombreUsuario(), user.getContraseña(), authorities);
+        return new MainUser(user.getUsername(), user.getPassword(), authorities);
+    }*/
+    
+    /*public static MainUser build(Usuario user){
+        List<GrantedAuthority> authorities = user.getRoles().stream().map(role-> new SimpleGrantedAuthority(role.getRolNombre())).collect(Collectors.toList());
+        return new MainUser(
+                user.getIdUsuario(),
+                user.getUsername(),
+                user.getPassword(),
+                user.getEstado(),
+                authorities);
+    }*/
+    public static MainUser build(Usuario user){
+        List<GrantedAuthority> authorities = user.getRoles().stream().map(role-> new SimpleGrantedAuthority(role.getRolNombre())).collect(Collectors.toList());
+        return new MainUser(
+                user.getIdUsuario(),
+                user.getUsername(),
+                user.getPassword(),
+                user.getEstado(),
+                authorities);
     }
 
     @Override

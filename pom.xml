@@ -82,6 +82,13 @@
                 
                 
                   <!-- Swagger 2 -->
+                  
+                <dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+                
                 <dependency>
                     <groupId>io.swagger</groupId>
                     <artifactId>swagger-annotations</artifactId>
@@ -90,10 +97,11 @@
                 </dependency>
                 
                 <dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.0.2</version>
-		</dependency>
+                    <groupId>org.springframework.security</groupId>
+                    <artifactId>spring-security-crypto</artifactId>
+                </dependency>
+                
+                
                 
                   
                      

@@ -19,6 +19,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import java.util.List;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -26,20 +28,22 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table (name= "usuario")
+@Table(name = "usuario")
 public class Usuario {
-    
+
+    @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
-    private String nombreUsuario;
-    private String contraseña;
-    private boolean estado;
-   
+    private String username;
+    private String password;
+    private Boolean estado;
+
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idPersona", referencedColumnName ="idPersona")
+    @JoinColumn(name = "idPersona", referencedColumnName = "idPersona")
     private Persona persona;
-    
+
     //
     /* @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -48,30 +52,29 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "id_rol")
     )
     private List<Rol> roles;
-*/
+     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "idUsuario"),
             inverseJoinColumns = @JoinColumn(name = "idRol"),
-            uniqueConstraints = @UniqueConstraint(columnNames = { "idUsuario", "idRol" })
+            uniqueConstraints = @UniqueConstraint(columnNames = {"idUsuario", "idRol"})
     )
     private List<Rol> roles;
 
-    public Usuario(Integer idUsuario, String NombreUsuario, String contraseña, boolean estado, Persona persona, List<Rol> roles) {
+    public Usuario(Integer idUsuario, String username, String password, boolean estado, Persona persona) {
         this.idUsuario = idUsuario;
-        this.nombreUsuario = NombreUsuario;
-        this.contraseña = contraseña;
+        this.username = username;
+        this.password = password;
         this.estado = estado;
         this.persona = persona;
-        this.roles = roles;
     }
 
     public Usuario() {
     }
-    
+
     //RELACION TABLA USUARIO - ADMINISTRADOR
-   /* @ManyToOne(fetch = FetchType.EAGER)
+    /* @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idAdministrador", referencedColumnName ="idAdministrador")
     private Administrador administrador;
     
@@ -86,9 +89,4 @@ public class Usuario {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
     private Doctor doctor;*/
-    
-    
-    
-    
-    
 }

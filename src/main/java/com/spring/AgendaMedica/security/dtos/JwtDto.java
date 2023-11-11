@@ -2,6 +2,7 @@
 package com.spring.AgendaMedica.security.dtos;
 
 
+import com.spring.AgendaMedica.modelo.Usuario;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,15 +10,17 @@ import lombok.Setter;
 @Getter
 public class JwtDto {
     private String token;
-    private UserResponseDto userResponse;
+    private Usuario userResponse;
 
     public JwtDto(String token) {
         this.token = token;
     }
 
-    public JwtDto(String token, UserResponseDto userResponse) {
+    public JwtDto(String token, Usuario userResponse) {
         this.token = token;
         this.userResponse = userResponse;
     }
+
+    
 
 }

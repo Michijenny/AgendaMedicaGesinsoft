@@ -45,7 +45,7 @@ public class Administrador {
     private List<Usuario> usuarios;*/
     
     
-       //RELACION CON LA TABLA ADMINISTRADOR USUARIO 
+    
     
     
     

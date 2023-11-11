@@ -54,13 +54,11 @@ public class PersonaController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                per.setCedula(p.getCedula());
-                per.setPrimerNombre(p.getPrimerNombre());
-                per.setPrimerApellido(p.getPrimerApellido());
-                per.setSegundoNombre(p.getSegundoApellido());
-                per.setGenero(p.getGenero());
+                per.setDocumento(p.getDocumento());
+                per.setNombres(p.getNombres());
+                per.setApellidos(p.getApellidos());
                 per.setFechanacimiento(p.getFechanacimiento());
-                per.setCorreo(p.getCorreo());
+                per.setEmail(p.getEmail());
                 per.setDireccion(p.getDireccion());
                 per.setTelefono(p.getTelefono());
                 return new ResponseEntity<>(perService.save(p), HttpStatus.OK);
@@ -74,6 +72,20 @@ public class PersonaController {
     public ResponseEntity<Persona> eliminarAdministrador(@PathVariable Integer id) {
         perService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    //LISTAR PERSONA POR ID
+     @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getPersonaById(@PathVariable("id") Integer id){
+        try {
+            Persona nc = perService.findById(id);
+            if(nc != null){
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("PERSONA NO ENCONTRADA",HttpStatus.NOT_FOUND);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

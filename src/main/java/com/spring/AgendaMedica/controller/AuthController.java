@@ -4,7 +4,7 @@
  */
 package com.spring.AgendaMedica.controller;
 
-import com.proyecto.faan.security.model.Message;
+
 import com.spring.AgendaMedica.repository.UsuarioRepository;
 import com.spring.AgendaMedica.security.dtos.LoginUser;
 import com.spring.AgendaMedica.security.jwt.JwtProvider;
@@ -25,9 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.core.Authentication;
 import com.spring.AgendaMedica.modelo.Usuario;
 import com.spring.AgendaMedica.security.dtos.JwtDto;
-import com.spring.AgendaMedica.security.dtos.UserResponseDto;
 import com.spring.AgendaMedica.modelo.Rol;
 import com.spring.AgendaMedica.modelo.RolNombres;
+import com.spring.AgendaMedica.security.model.Message;
 import com.spring.AgendaMedica.servicios.RolService;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -57,11 +57,14 @@ public class AuthController {
     private  PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AuthController(AuthenticationManagerBuilder authenticationManagerBuilder, UsuarioRepository userService, JwtProvider jwtProvider){
+    public AuthController(AuthenticationManagerBuilder authenticationManagerBuilder, UsuarioRepository userService, JwtProvider jwtProvider, RolService rolService, PasswordEncoder passwordEncoder) {
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userService = userService;
         this.jwtProvider = jwtProvider;
+        this.rolService = rolService;
+        this.passwordEncoder = passwordEncoder;
     }
+    
 
     @PostMapping("/signIn")
     public ResponseEntity<Object> login(@Valid @RequestBody LoginUser loginUser, BindingResult bidBindingResult) {
@@ -74,23 +77,23 @@ public class AuthController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             String jwt = jwtProvider.generateToken(authentication);
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            Usuario user = userService.findByNombreUsuario(userDetails.getUsername());
-            UserResponseDto responseDto = new UserResponseDto(user.getIdUsuario(), user.getNombreUsuario(), user.getRoles());
-            JwtDto jwtDto = new JwtDto(jwt, responseDto);
+            Usuario user = userService.findByUsername(userDetails.getUsername());
+            JwtDto jwtDto = new JwtDto(jwt, user);
             return new ResponseEntity<>(jwtDto, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(new Message("Revise sus credenciales " + e), HttpStatus.BAD_REQUEST);
         }
     }
+
     
     //registro
-    
-    @PostMapping("/register")
+    //ESTE METODO ES PARA CUANDO EL ROL VIENE DE UNA CLASE EMUN
+   /* @PostMapping("/register")
     public ResponseEntity<Object> resgister(@RequestBody Usuario user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
         }
-        user.setContraseña(passwordEncoder.encode(user.getContraseña()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         List<Rol> addRol = new ArrayList<>();
         if(user.getRoles().isEmpty()){
            addRol.add(rolService.findByRolNombre(RolNombres.ROL_PACIENTE).get());
@@ -98,6 +101,17 @@ public class AuthController {
         }
         userService.save(user);
         return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
+    }*/
+    
+    @PostMapping("/register")
+    public ResponseEntity<Usuario> crear(@RequestBody Usuario c) {
+        try {
+            c.setEstado(true);
+            c.setPassword(passwordEncoder.encode(c.getPassword()));
+            return new ResponseEntity<>(userService.save(c), HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     
     

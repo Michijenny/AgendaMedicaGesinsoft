@@ -148,5 +148,7 @@ public class Antropometria {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
     private Doctor idDoctor;
+    
+    
 
 }
