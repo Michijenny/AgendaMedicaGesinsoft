@@ -79,4 +79,17 @@ public class DoctorController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getDoctorById(@PathVariable("id") Integer id) {
+        try {
+            Doctor nc = doctorService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("DOCTOR NO ENCONTRADO NO ENCONTRADA", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

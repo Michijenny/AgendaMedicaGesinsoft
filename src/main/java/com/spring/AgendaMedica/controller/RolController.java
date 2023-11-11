@@ -26,11 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/rol")
 public class RolController {
-    
+
     @Autowired
     RolService rolService;
 
@@ -68,6 +68,18 @@ public class RolController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    
-    
+    //LISTAR ROL POR ID
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getRolById(@PathVariable("id") Integer id) {
+        try {
+            Rol nc = rolService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("ROL NO ENCONTRADA", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

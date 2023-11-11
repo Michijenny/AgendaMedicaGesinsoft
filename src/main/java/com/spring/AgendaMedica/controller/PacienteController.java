@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/paciente")
 public class PacienteController {
@@ -101,6 +101,19 @@ public class PacienteController {
     public ResponseEntity<Paciente> eliminarPaciente(@PathVariable Integer id) {
         pacienteService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getPacienteById(@PathVariable("id") Integer id) {
+        try {
+            Paciente nc = pacienteService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("PACIENTE NO ENCONTRADO", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

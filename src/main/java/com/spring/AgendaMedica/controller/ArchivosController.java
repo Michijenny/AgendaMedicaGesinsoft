@@ -5,6 +5,7 @@
 package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Archivos;
+import com.spring.AgendaMedica.modelo.Historias;
 import com.spring.AgendaMedica.servicios.ArchivoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,19 @@ public class ArchivosController {
     public ResponseEntity<Archivos> eliminarArchivo(@PathVariable Integer id) {
         archivoService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getArchivosById(@PathVariable("id") Integer id) {
+        try {
+            Archivos nc = archivoService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("ARCHIVO NO ENCONTRADO", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

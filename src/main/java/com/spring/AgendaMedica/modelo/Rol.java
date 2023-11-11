@@ -20,7 +20,6 @@ import org.antlr.v4.runtime.misc.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-
 /**
  *
  * @author enriq
@@ -35,21 +34,11 @@ public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRol;
-    
+
     private String rolNombre;
-    
+
     //RELACION 
-    @ManyToMany (mappedBy = "roles")
-    private List <Usuario> usuarios;
-    
-   
-    
-    
-
-   
-
-    
-    
-    
+    @ManyToMany(mappedBy = "roles")
+    private List<Usuario> usuarios;
 
 }

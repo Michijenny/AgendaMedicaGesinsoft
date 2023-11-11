@@ -71,8 +71,6 @@ public class Paciente {
     private String tipodocumento;
     private String abrir;
     private String genero;
-    
-
 
     public Paciente() {
     }
@@ -117,38 +115,33 @@ public class Paciente {
         this.abrir = abrir;
         this.genero = genero;
     }
-    
-    
+
     //RELACION CON LA TABLA ANTROPOMETRIA
     @JsonIgnore
-    @OneToMany (mappedBy = "idPaciente")
+    @OneToMany(mappedBy = "idPaciente")
     private List<Antropometria> antropometria;
-    
-    
+
     //RELACION CON LA TABLA ARCHIVOS
     @JsonIgnore
     @OneToMany(mappedBy = "idPaciente")
-    private List <Archivos> archivo;
-    
+    private List<Archivos> archivo;
+
     //RELACION CON LA TABLA ODONTOLOGIA
     @JsonIgnore
     @OneToMany(mappedBy = "idPaciente")
-    private List <Odontologia> odontologia;
-    
+    private List<Odontologia> odontologia;
+
     //RELACION CON LA TABLA OFTALMOLOGIA
     @JsonIgnore
     @OneToMany(mappedBy = "idPaciente")
-    private List <Oftalmologia> oftalmologia;
-    
+    private List<Oftalmologia> oftalmologia;
+
     //RELACION CON LA TABLA PACIENTE / IMAGENES
     @JsonIgnore
     @OneToMany(mappedBy = "idPaciente")
-    private List <Imagenes> imagenes;
-    
+    private List<Imagenes> imagenes;
+
     //RELACION CON LA TABLA PACIENTE USUARIO
     /*@OneToMany(mappedBy = "paciente")
     private List<Usuario> usuarios;*/
-    
-    
-        
 }

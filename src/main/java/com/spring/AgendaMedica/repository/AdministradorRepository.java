@@ -13,14 +13,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author enriq
  */
-
 @Repository
 public interface AdministradorRepository extends JpaRepository<Administrador, Integer> {
-
-//    Optional<Administrador> NombreAdministrador(String nombreAd);
-//
-//    boolean existeAdmin(String nombreAdmin);
-    
-    //boolean existeByEmail (String email);
 
 }

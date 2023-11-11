@@ -39,28 +39,15 @@ public class Administrador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAdministrador;
-    
+
+    public Administrador(Integer idAdministrador) {
+        this.idAdministrador = idAdministrador;
+    }
+
+    public Administrador() {
+    }
+
     //RELACION CON LA TABLA ADMINISTRADOR USUARIO 
     /*@OneToMany(mappedBy = "administrador")
     private List<Usuario> usuarios;*/
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 }

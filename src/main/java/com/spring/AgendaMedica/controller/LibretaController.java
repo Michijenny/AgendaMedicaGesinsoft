@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/libreta")
 public class LibretaController {
@@ -40,7 +40,6 @@ public class LibretaController {
                 HttpStatus.OK);
     }
 
-  
     @PostMapping("/crear")
     public ResponseEntity<Libreta> crearLibreta(
             @RequestBody Libreta l) {
@@ -73,6 +72,19 @@ public class LibretaController {
     public ResponseEntity<Libreta> eliminarLibreta(@PathVariable Integer id) {
         libretaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getLibretaById(@PathVariable("id") Integer id) {
+        try {
+            Libreta nc = libretaService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("LIBRETA NO ENCONTRADA", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

@@ -57,10 +57,10 @@ public class Libreta {
         this.direccion = direccion;
         this.notas = notas;
     }
-    
+
     //RELACION LIBRETA - DOCTOR 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
     private Doctor idDoctor;
 
 }

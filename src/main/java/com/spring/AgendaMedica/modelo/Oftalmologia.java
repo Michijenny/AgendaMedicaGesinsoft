@@ -47,14 +47,14 @@ public class Oftalmologia {
         this.ojoderecho = ojoderecho;
         this.anotaciones = anotaciones;
     }
-    
+
     //RELACION CON LA TABLA PACIENTE
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idPaciente", referencedColumnName ="idPaciente")
+    @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")
     private Paciente idPaciente;
-    
+
     //RELACION CON LA TABLA DOCTOR
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
     private Doctor idDoctor;
 }

@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/imagenes")
 public class ImagenesController {
@@ -44,7 +44,7 @@ public class ImagenesController {
     public ResponseEntity<Imagenes> crearImagen(
             @RequestBody Imagenes a) {
         return new ResponseEntity<>(imagenService.save(a),
-                 HttpStatus.CREATED);
+                HttpStatus.CREATED);
     }
 
     @PutMapping("/actualizar/{id}")
@@ -71,6 +71,19 @@ public class ImagenesController {
     public ResponseEntity<Imagenes> eliminarImagrn(@PathVariable Integer id) {
         imagenService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getImagenesById(@PathVariable("id") Integer id) {
+        try {
+            Imagenes nc = imagenService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("IMAGEN NO ENCONTRADA", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

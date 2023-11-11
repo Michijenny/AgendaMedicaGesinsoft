@@ -34,11 +34,10 @@ public class Vadecateg {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCategoria;
-    @Column (unique = true)
+    @Column(unique = true)
     private String titulo;
     private String tipo;
-    
-    
+
     //CONSTRUCTORES
     public Vadecateg() {
     }
@@ -48,16 +47,15 @@ public class Vadecateg {
         this.titulo = titulo;
         this.tipo = tipo;
     }
-    
+
     //RELACION CON LA TABLA VADECATEG/ DOCTOR 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
     private Doctor doctor;
-    
+
     //RELACION TABLA VADECATEG - VADEMECUM
     @JsonIgnore
     @OneToMany(mappedBy = "vadecateg")
-    private List <Vademecum> vademecum;
-    
-    
+    private List<Vademecum> vademecum;
+
 }

@@ -4,11 +4,13 @@
  */
 package com.spring.AgendaMedica.servicios;
 import com.spring.AgendaMedica.modelo.Usuario;
+import com.spring.AgendaMedica.service.GenericService;
+import java.io.Serializable;
 /**
  *
  * @author enriq
  */
-public interface UsuarioService {
+public interface UsuarioService extends GenericService<Usuario, Integer> {
     
     Usuario findByUsername(String username);
     boolean existsByUsername(String username);

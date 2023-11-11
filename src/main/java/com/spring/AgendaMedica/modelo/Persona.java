@@ -27,15 +27,14 @@ import java.util.List;
 @Table(name = "persona")
 public class Persona {
 
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPersona;
-    @Column (unique = true)
+    @Column(unique = true)
     private String documento;
     private String nombres;
     private String apellidos;
-    private Date fechanacimiento;   
+    private Date fechanacimiento;
     private String email;
     private String direccion;
     private String telefono;
@@ -54,15 +53,10 @@ public class Persona {
         this.telefono = telefono;
         this.usuario = usuario;
     }
-    
-    
-    
+
     //RELACION PERSONA USUARIO
     @JsonIgnore
-    @OneToMany (mappedBy = "persona")
+    @OneToMany(mappedBy = "persona")
     private List<Usuario> usuario;
-   
-    
-    
 
 }

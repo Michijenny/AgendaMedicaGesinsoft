@@ -4,6 +4,7 @@
  */
 package com.spring.AgendaMedica.controller;
 
+import com.spring.AgendaMedica.modelo.Rol;
 import com.spring.AgendaMedica.modelo.Vadecateg;
 import com.spring.AgendaMedica.service.VadecategServicelmpl;
 import com.spring.AgendaMedica.servicios.VadecategService;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/vadecateg")
 public class VadecategController {
@@ -67,6 +68,19 @@ public class VadecategController {
     public ResponseEntity<Vadecateg> eliminarCategoria(@PathVariable Integer id) {
         vadeService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getVadecategById(@PathVariable("id") Integer id) {
+        try {
+            Vadecateg nc = vadeService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("CATEGORIA NO ENCONTRADA", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

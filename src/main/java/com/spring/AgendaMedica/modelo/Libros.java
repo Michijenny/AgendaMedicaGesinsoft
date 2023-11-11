@@ -57,10 +57,10 @@ public class Libros {
         this.compartido = compartido;
         this.digital = digital;
     }
-    
+
     //RELACION CON LA TABLA LIBROS - DOCTOR
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
     private Doctor idDoctor;
 
 }

@@ -5,6 +5,7 @@
 package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Antropometria;
+import com.spring.AgendaMedica.modelo.Historias;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -114,6 +115,19 @@ public class AntropometriaController {
     public ResponseEntity<Antropometria> eliminarAntropometria(@PathVariable Integer id) {
         antropometriaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getAntropometriaById(@PathVariable("id") Integer id) {
+        try {
+            Antropometria nc = antropometriaService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("ANTROPOMETRIA NO ENCONTRADO", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

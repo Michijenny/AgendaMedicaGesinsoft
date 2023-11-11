@@ -48,7 +48,7 @@ public class Archivos {
 
     //RELACION LA TABLA ARCHIVOS CON PACIENTE
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idPaciente", referencedColumnName ="idPaciente")
+    @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")
     private Paciente idPaciente;
 
 }

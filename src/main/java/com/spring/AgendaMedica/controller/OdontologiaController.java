@@ -5,6 +5,7 @@
 package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Odontologia;
+import com.spring.AgendaMedica.modelo.Rol;
 import com.spring.AgendaMedica.servicios.OdontologiaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,19 @@ public class OdontologiaController {
     public ResponseEntity<Odontologia> eliminarOdontologia(@PathVariable Integer id) {
         odontologiaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getOdontologiaById(@PathVariable("id") Integer id) {
+        try {
+            Odontologia nc = odontologiaService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("ODONTOLOGIA NO ENCONTRADA", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

@@ -43,9 +43,8 @@ public class Vademecum {
     private String equivalencias;
     private String anotaciones;
     private int stock;
-    
-    //CONSTRUCTORES
 
+    //CONSTRUCTORES
     public Vademecum() {
     }
 
@@ -62,20 +61,15 @@ public class Vademecum {
         this.anotaciones = anotaciones;
         this.stock = stock;
     }
-    
-    
-    
-    
+
     //RELACION CON LA TABLA VADEMECUM / DOCTOR
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
     private Doctor doctor;
-    
+
     //RELACION CON LA TABLA VADEMECUM - VADECATEG
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idCategoria", referencedColumnName ="idCategoria")
+    @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria")
     private Vadecateg vadecateg;
-    
-    
 
 }

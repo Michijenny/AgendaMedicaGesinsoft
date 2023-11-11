@@ -4,7 +4,6 @@
  */
 package com.spring.AgendaMedica.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +25,7 @@ import org.springframework.web.bind.annotation.PutMapping;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/administrador")
 public class AdministradorController {
@@ -54,7 +53,7 @@ public class AdministradorController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-               
+
                 return new ResponseEntity<>(administradorService.save(a), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -66,6 +65,19 @@ public class AdministradorController {
     public ResponseEntity<Administrador> eliminarAdministrador(@PathVariable Integer id) {
         administradorService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getRolById(@PathVariable("id") Integer id) {
+        try {
+            Administrador nc = administradorService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("ADMINISTRADOR NO ENCONTRADO", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

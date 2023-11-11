@@ -45,8 +45,5 @@ public class Historias {
         this.idAutor = idAutor;
         this.firma = firma;
     }
-    
-    
-    
 
 }

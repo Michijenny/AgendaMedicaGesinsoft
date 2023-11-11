@@ -138,17 +138,15 @@ public class Antropometria {
         this.anotaciones = anotaciones;
         this.prescripciones = prescripciones;
     }
-    
+
     //RELACION DE MUCHOS A UNO ANTROPOMETRIA PACIENTE
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idPaciente", referencedColumnName ="idPaciente")
+    @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")
     private Paciente idPaciente;
-    
+
     //RELACION CON LA TABLA  ANTROPOMETRIA - DOCTOR
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
     private Doctor idDoctor;
-    
-    
 
 }

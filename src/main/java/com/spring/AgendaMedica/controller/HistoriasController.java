@@ -5,6 +5,7 @@
 package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Historias;
+import com.spring.AgendaMedica.modelo.Rol;
 import com.spring.AgendaMedica.service.HistoriasServicelmpl;
 import com.spring.AgendaMedica.servicios.HistoriasService;
 import java.util.List;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/historias")
 public class HistoriasController {
@@ -44,7 +45,7 @@ public class HistoriasController {
     public ResponseEntity<Historias> crearHistoria(
             @RequestBody Historias h) {
         return new ResponseEntity<>(historiaService.save(h),
-                 HttpStatus.CREATED);
+                HttpStatus.CREATED);
     }
 
     @PutMapping("/actualizar/{id}")
@@ -69,6 +70,19 @@ public class HistoriasController {
     public ResponseEntity<Historias> eliminarHistoria(@PathVariable Integer id) {
         historiaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getHistoriasById(@PathVariable("id") Integer id) {
+        try {
+            Historias nc = historiaService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("ROL NO ENCONTRADA", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

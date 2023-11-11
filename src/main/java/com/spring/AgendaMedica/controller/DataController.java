@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/data")
 public class DataController {
@@ -44,7 +44,7 @@ public class DataController {
     public ResponseEntity<Datas> crearData(
             @RequestBody Datas d) {
         return new ResponseEntity<>(dataService.save(d),
-                 HttpStatus.CREATED);
+                HttpStatus.CREATED);
     }
 
     @PutMapping("/actualizar/{id}")
@@ -68,6 +68,19 @@ public class DataController {
     public ResponseEntity<Datas> eliminarDat(@PathVariable Integer id) {
         dataService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getDataById(@PathVariable("id") Integer id) {
+        try {
+            Datas nc = dataService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("ROL NO ENCONTRADA", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

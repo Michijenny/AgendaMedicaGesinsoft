@@ -18,7 +18,8 @@ import lombok.Setter;
 import javax.validation.constraints.Size;
 
 /**
- *s
+ * s
+ *
  * @author enriq
  */
 @Data
@@ -33,22 +34,21 @@ public class Datas {
     private Integer idData;
     private String variables;
     private String valor;
-  
 
     public Datas(Integer idData, String variable, String valor) {
         this.idData = idData;
         this.variables = variable;
         this.valor = valor;
-        
+
     }
 
     public Datas() {
     }
-    
+
     //RELACION DE LA TABLA DATA CON EL DOCTOR 
     //RELACION TABLA IMAGENES - PACIENTE
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
     private Doctor idMedico;
 
 }

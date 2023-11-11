@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author enriq
  */
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/libros")
 public class LibrosController {
@@ -44,7 +44,7 @@ public class LibrosController {
     public ResponseEntity<Libros> crearLibro(
             @RequestBody Libros l) {
         return new ResponseEntity<>(libroService.save(l),
-                 HttpStatus.CREATED);
+                HttpStatus.CREATED);
     }
 
     @PutMapping("/actualizar/{id}")
@@ -75,6 +75,19 @@ public class LibrosController {
     public ResponseEntity<Libros> eliminarLibros(@PathVariable Integer id) {
         libroService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getLibroById(@PathVariable("id") Integer id) {
+        try {
+            Libros nc = libroService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("LIBRO NO ENCONTRADO", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

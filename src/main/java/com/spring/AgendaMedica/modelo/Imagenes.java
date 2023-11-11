@@ -48,17 +48,15 @@ public class Imagenes {
         this.tipo = tipo;
         this.firma = firma;
     }
-    
+
     //RELACION TABLA IMAGENES - PACIENTE
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idDoctor", referencedColumnName ="idDoctor")
+    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
     private Doctor idAutor;
-    
-    
+
     //RELACION TABLA IMAGENES - DOCTOR
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idPaciente", referencedColumnName ="idPaciente")
+    @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")
     private Paciente idPaciente;
-    
 
 }

@@ -5,6 +5,7 @@
 package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Oftalmologia;
+import com.spring.AgendaMedica.modelo.Rol;
 import com.spring.AgendaMedica.servicios.OftalmologiaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,19 @@ public class OftalmologiaController {
     public ResponseEntity<Oftalmologia> eliminarOftalmologia(@PathVariable Integer id) {
         oftalmologiaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getOftalmologiaById(@PathVariable("id") Integer id) {
+        try {
+            Oftalmologia nc = oftalmologiaService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("OFTALMOLOGIA  NO ENCONTRADA", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
