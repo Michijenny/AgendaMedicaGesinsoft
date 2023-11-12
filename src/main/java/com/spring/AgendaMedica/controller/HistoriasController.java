@@ -59,7 +59,7 @@ public class HistoriasController {
                 his.setNota(h.getNota());
                 his.setIdAutor(h.getIdAutor());
                 his.setFirma(h.getFirma());
-                return new ResponseEntity<>(historiaService.save(h), HttpStatus.OK);
+                return new ResponseEntity<>(historiaService.save(his), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

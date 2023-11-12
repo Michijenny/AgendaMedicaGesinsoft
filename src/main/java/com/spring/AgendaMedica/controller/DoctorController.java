@@ -66,7 +66,7 @@ public class DoctorController {
                 doc.setCfg(d.getCfg());
                 doc.setCfgsec(d.getCfgsec());
                 doc.setEmail(d.getEmail());
-                return new ResponseEntity<>(doctorService.save(d), HttpStatus.OK);
+                return new ResponseEntity<>(doctorService.save(doc), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

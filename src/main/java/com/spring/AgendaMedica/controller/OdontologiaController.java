@@ -63,7 +63,7 @@ public class OdontologiaController {
                 odon.setReferencia4(o.getReferencia4());
                 odon.setReferencia5(o.getReferencia5());
                 odon.setAnotaciones(o.getAnotaciones());
-                return new ResponseEntity<>(odontologiaService.save(o), HttpStatus.OK);
+                return new ResponseEntity<>(odontologiaService.save(odon), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

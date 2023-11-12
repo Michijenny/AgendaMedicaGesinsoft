@@ -64,7 +64,7 @@ public class VademecumController {
                 vade.setEquivalencias(v.getEquivalencias());
                 vade.setAnotaciones(v.getAnotaciones());
                 vade.setStock(v.getStock());
-                return new ResponseEntity<>(vaService.save(v), HttpStatus.OK);
+                return new ResponseEntity<>(vaService.save(vade), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

@@ -61,7 +61,7 @@ public class PersonaController {
                 per.setEmail(p.getEmail());
                 per.setDireccion(p.getDireccion());
                 per.setTelefono(p.getTelefono());
-                return new ResponseEntity<>(perService.save(p), HttpStatus.OK);
+                return new ResponseEntity<>(perService.save(per), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

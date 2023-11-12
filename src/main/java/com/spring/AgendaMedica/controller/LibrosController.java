@@ -64,7 +64,7 @@ public class LibrosController {
                 lib.setIdDoctor(l.getIdDoctor());
                 lib.setCompartido(l.getCompartido());
                 lib.setDigital(l.getDigital());
-                return new ResponseEntity<>(libroService.save(l), HttpStatus.OK);
+                return new ResponseEntity<>(libroService.save(lib), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

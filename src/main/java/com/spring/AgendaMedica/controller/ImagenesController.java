@@ -60,7 +60,7 @@ public class ImagenesController {
                 ima.setTipo(i.getTipo());
                 ima.setIdAutor(i.getIdAutor());
                 ima.setFirma(i.getFirma());
-                return new ResponseEntity<>(imagenService.save(i), HttpStatus.OK);
+                return new ResponseEntity<>(imagenService.save(ima), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

@@ -57,7 +57,7 @@ public class DataController {
                 data.setIdMedico(d.getIdMedico());
                 data.setValor(d.getValor());
                 data.setVariables(d.getVariables());
-                return new ResponseEntity<>(dataService.save(d), HttpStatus.OK);
+                return new ResponseEntity<>(dataService.save(data), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

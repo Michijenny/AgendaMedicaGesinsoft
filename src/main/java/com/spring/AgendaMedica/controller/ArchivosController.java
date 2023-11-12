@@ -58,7 +58,7 @@ public class ArchivosController {
                 arc.setTipo(a.getTipo());
                 arc.setRuta(a.getRuta());
                 arc.setStorage(a.getStorage());
-                return new ResponseEntity<>(archivoService.save(a), HttpStatus.OK);
+                return new ResponseEntity<>(archivoService.save(arc), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

@@ -74,6 +74,7 @@ public class LibretaController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> getLibretaById(@PathVariable("id") Integer id) {
         try {

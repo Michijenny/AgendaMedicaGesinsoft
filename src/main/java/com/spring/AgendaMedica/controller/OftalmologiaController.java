@@ -59,7 +59,7 @@ public class OftalmologiaController {
                 oft.setOjoizquierdo(o.getOjoizquierdo());
                 oft.setOjoderecho(o.getOjoderecho());
                 oft.setAnotaciones(o.getAnotaciones());
-                return new ResponseEntity<>(oftalmologiaService.save(o), HttpStatus.OK);
+                return new ResponseEntity<>(oftalmologiaService.save(oft), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
