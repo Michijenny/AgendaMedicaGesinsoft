@@ -55,7 +55,7 @@ public class Antropometria {
     private double muslo;
     private double tobillo;
     private double biliacodi;
-    private double muñeca;
+    private double muneca;
     private double toraxtrans;
     private double cefalico;
     private double torax;
@@ -67,7 +67,7 @@ public class Antropometria {
     private double bicitalflex;
     private double muslo1;
     private double cadera;
-    private double muñeca1;
+    private double muneca1;
     private double gemelo1;
     private double abdomen;
     private double acroestiloide;
@@ -111,7 +111,7 @@ public class Antropometria {
         this.muslo = muslo;
         this.tobillo = tobillo;
         this.biliacodi = biliacodi;
-        this.muñeca = muñeca;
+        this.muneca = muñeca;
         this.toraxtrans = toraxtrans;
         this.cefalico = cefalico;
         this.torax = torax;
@@ -123,7 +123,7 @@ public class Antropometria {
         this.bicitalflex = bicitalflex;
         this.muslo1 = muslo1;
         this.cadera = cadera;
-        this.muñeca1 = muñeca1;
+        this.muneca1 = muñeca1;
         this.gemelo1 = gemelo1;
         this.abdomen = abdomen;
         this.acroestiloide = acroestiloide;

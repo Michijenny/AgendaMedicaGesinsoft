@@ -78,7 +78,7 @@ public class AntropometriaController {
                 ant.setMuslo(a.getMuslo());
                 ant.setTobillo(a.getTobillo());
                 ant.setBiliacodi(a.getBiliacodi());
-                ant.setMuñeca(a.getMuñeca());
+                ant.setMuneca(a.getMuneca());
                 ant.setToraxtrans(a.getToraxtrans());
                 ant.setCefalico(a.getCefalico());
                 ant.setTorax(a.getTorax());
@@ -90,7 +90,7 @@ public class AntropometriaController {
                 ant.setBicitalflex(a.getBicitalflex());
                 ant.setMuslo1(a.getMuslo1());
                 ant.setCadera(a.getCadera());
-                ant.setMuñeca1(a.getMuñeca1());
+                ant.setMuneca1(a.getMuneca1());
                 ant.setGemelo1(a.getGemelo1());
                 ant.setAbdomen(a.getAbdomen());
                 ant.setAcroestiloide(a.getAcroestiloide());

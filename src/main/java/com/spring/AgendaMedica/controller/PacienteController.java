@@ -54,6 +54,7 @@ public class PacienteController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
+                pac.setIdPaciente(id);
                 pac.setApellido(p.getApellido());
                 pac.setNombre(p.getNombre());
                 pac.setDocumento(p.getDocumento());
@@ -90,7 +91,7 @@ public class PacienteController {
                 pac.setTipodocumento(p.getTipodocumento());
                 pac.setAbrir(p.getAbrir());
                 pac.setGenero(p.getGenero());
-                return new ResponseEntity<>(pacienteService.save(p), HttpStatus.OK);
+                return new ResponseEntity<>(pacienteService.save(pac), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

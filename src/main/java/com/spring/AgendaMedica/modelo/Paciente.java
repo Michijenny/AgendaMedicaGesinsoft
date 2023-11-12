@@ -38,7 +38,7 @@ public class Paciente {
     private String apellido;
     private String nombre;
     private String documento;
-    private Date fechanacimiento;
+    private String fechanacimiento;
     private String grupo;
     private String sexo;
     private String direccion;
@@ -75,7 +75,7 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(Integer idPaciente, Integer idRol, String apellido, String nombre, String documento, Date fechanacimiento, String grupo, String sexo, String direccion, String cp, String obra, String afiliado, String telefono1, String telefono2, String telefono3, String clinicos, String diagnostico, String cormobilidades, String familiar, String comentarios, String extra1, String extra2, String extra3, String extra4, String extra5, String extra6, String extra7, String extra8, String extra9, String extra10, String civil, Long idDoctor, String campoCfg1, String campoCfg2, String campoCfg3, String tipodocumento, String abrir, String genero) {
+    public Paciente(Integer idPaciente, Integer idRol, String apellido, String nombre, String documento, String fechanacimiento, String grupo, String sexo, String direccion, String cp, String obra, String afiliado, String telefono1, String telefono2, String telefono3, String clinicos, String diagnostico, String cormobilidades, String familiar, String comentarios, String extra1, String extra2, String extra3, String extra4, String extra5, String extra6, String extra7, String extra8, String extra9, String extra10, String civil, Long idDoctor, String campoCfg1, String campoCfg2, String campoCfg3, String tipodocumento, String abrir, String genero) {
         this.idPaciente = idPaciente;
         this.idRol = idRol;
         this.apellido = apellido;
