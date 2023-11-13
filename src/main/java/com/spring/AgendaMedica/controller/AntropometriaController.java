@@ -104,6 +104,8 @@ public class AntropometriaController {
                 ant.setPie(a.getPie());
                 ant.setAnotaciones(a.getAnotaciones());
                 ant.setPrescripciones(a.getPrescripciones());
+                ant.setIdPaciente(a.getIdPaciente());
+                ant.setIdDoctor(a.getIdDoctor());
                 return new ResponseEntity<>(antropometriaService.save(a), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
