@@ -4,7 +4,9 @@
  */
 package com.spring.AgendaMedica.modelo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -117,10 +119,14 @@ public class Paciente {
     }
 
     //RELACION CON LA TABLA ANTROPOMETRIA
-    @JsonIgnore
-    @OneToMany(mappedBy = "idPaciente")
-    private List<Antropometria> antropometria;
-
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "idPaciente")
+//    private List<Antropometria> antropometria;
+     @JsonBackReference(value = "antropometria")
+    
+    @ManyToOne
+    @JoinColumn(name = "idAntropometria", referencedColumnName = "idAntropometria")
+    private Antropometria antropometria;
     //RELACION CON LA TABLA ARCHIVOS
     @JsonIgnore
     @OneToMany(mappedBy = "idPaciente")

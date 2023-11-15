@@ -36,6 +36,9 @@ public class AntropometriaController {
 
     @GetMapping("/listar")
     public ResponseEntity<List<Antropometria>> listarAntropometria() {
+        System.out.println("ANTROPOMETRIA");
+        List<Antropometria> apellido = antropometriaService.findByAll();
+        apellido.forEach(elemento -> System.out.println(elemento.getIdPaciente().size()));
         return new ResponseEntity<>(antropometriaService.findByAll(),
                 HttpStatus.OK);
     }
@@ -106,7 +109,7 @@ public class AntropometriaController {
                 ant.setPrescripciones(a.getPrescripciones());
                 ant.setIdPaciente(a.getIdPaciente());
                 ant.setIdDoctor(a.getIdDoctor());
-                return new ResponseEntity<>(antropometriaService.save(a), HttpStatus.OK);
+                return new ResponseEntity<>(antropometriaService.save(ant), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

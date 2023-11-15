@@ -49,11 +49,12 @@ public class Doctor {
     private String cfgsec;
     @NotNull
     private String email;
-
+    private String matricula;
+    
     public Doctor() {
     }
 
-    public Doctor(Integer idDoctor, Integer idRol, String nombre, String clavesecreta, String comentarios, String direccion, String especialidad, String telefono, String clave, String notaAuto, String nota, String comparte, String cfg, String cfgsec, String email) {
+    public Doctor(Integer idDoctor, Integer idRol, String nombre, String clavesecreta, String comentarios, String direccion, String especialidad, String telefono, String clave, String notaAuto, String nota, String comparte, String cfg, String cfgsec, String email,String matricula) {
         this.idDoctor = idDoctor;
         this.nombre = nombre;
         this.clavesecreta = clavesecreta;
@@ -68,6 +69,7 @@ public class Doctor {
         this.cfg = cfg;
         this.cfgsec = cfgsec;
         this.email = email;
+        this.matricula= matricula;
 
     }
 
