@@ -150,7 +150,7 @@ public class Antropometria {
 //    @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")
 //    private Paciente idPaciente;
 
-    @JsonManagedReference(value = "idPaciente")
+    //@JsonManagedReference(value = "idPaciente")
      @OneToMany(mappedBy = "antropometria")
     private List<Paciente> idPaciente;
     //RELACION CON LA TABLA  ANTROPOMETRIA - DOCTOR

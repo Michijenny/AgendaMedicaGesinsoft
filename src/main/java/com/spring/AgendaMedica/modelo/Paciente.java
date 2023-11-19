@@ -36,7 +36,6 @@ public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPaciente;
-    private Integer idRol;
     private String apellido;
     private String nombre;
     private String documento;
@@ -77,9 +76,9 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(Integer idPaciente, Integer idRol, String apellido, String nombre, String documento,String fechanacimiento, String grupo, String sexo, String direccion, String cp, String obra, String afiliado, String telefono1, String telefono2, String telefono3, String clinicos, String diagnostico, String cormobilidades, String familiar, String comentarios, String extra1, String extra2, String extra3, String extra4, String extra5, String extra6, String extra7, String extra8, String extra9, String extra10, String civil, Long idDoctor, String campoCfg1, String campoCfg2, String campoCfg3, String tipodocumento, String abrir, String genero) {
+    public Paciente(Integer idPaciente, String apellido, String nombre, String documento,String fechanacimiento, String grupo, String sexo, String direccion, String cp, String obra, String afiliado, String telefono1, String telefono2, String telefono3, String clinicos, String diagnostico, String cormobilidades, String familiar, String comentarios, String extra1, String extra2, String extra3, String extra4, String extra5, String extra6, String extra7, String extra8, String extra9, String extra10, String civil, Long idDoctor, String campoCfg1, String campoCfg2, String campoCfg3, String tipodocumento, String abrir, String genero) {
         this.idPaciente = idPaciente;
-        this.idRol = idRol;
+       
         this.apellido = apellido;
         this.nombre = nombre;
         this.documento = documento;
@@ -122,7 +121,7 @@ public class Paciente {
 //    @JsonIgnore
 //    @OneToMany(mappedBy = "idPaciente")
 //    private List<Antropometria> antropometria;
-     @JsonBackReference(value = "antropometria")
+     //@JsonBackReference(value = "antropometria")
     
     @ManyToOne
     @JoinColumn(name = "idAntropometria", referencedColumnName = "idAntropometria")

@@ -34,7 +34,7 @@ public class Persona {
     private String documento;
     private String nombres;
     private String apellidos;
-    private Date fechanacimiento;
+    private String fechanacimiento;
     private String email;
     private String direccion;
     private String telefono;
@@ -42,7 +42,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(Integer idPersona, String documento, String nombres, String apellidos, Date fechanacimiento, String email, String direccion, String telefono, List<Usuario> usuario) {
+    public Persona(Integer idPersona, String documento, String nombres, String apellidos, String fechanacimiento, String email, String direccion, String telefono, List<Usuario> usuario) {
         this.idPersona = idPersona;
         this.documento = documento;
         this.nombres = nombres;
