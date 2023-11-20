@@ -5,7 +5,7 @@
 package com.spring.AgendaMedica.controller;
 
 import com.spring.AgendaMedica.modelo.Archivos;
-import com.spring.AgendaMedica.modelo.Historias;
+
 import com.spring.AgendaMedica.servicios.ArchivoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ public class ArchivosController {
                 HttpStatus.CREATED);
     }
 
-    @PutMapping("/actualizar/{id}")
+   /* @PutMapping("/actualizar/{id}")
     public ResponseEntity<Archivos> actualizarArchivos(@PathVariable Integer id, @RequestBody Archivos a) {
         Archivos arc = archivoService.findById(id);
         if (arc == null) {
@@ -63,7 +63,7 @@ public class ArchivosController {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
-    }
+    }*/
 
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Archivos> eliminarArchivo(@PathVariable Integer id) {
