@@ -33,6 +33,8 @@ public class Oftalmologia {
     private Integer id;
     private String fecha;
     private String resultado;
+    private String examenes;
+    private String exploracion;
     private String ojoizquierdo;
     private String ojoderecho;
     private String anotaciones;
@@ -40,9 +42,11 @@ public class Oftalmologia {
     public Oftalmologia() {
     }
 
-    public Oftalmologia(Integer id, String resultado, String ojoizquierdo, String ojoderecho, String anotaciones) {
+    public Oftalmologia(Integer id, String resultado, String examenes, String exploracion, String ojoizquierdo, String ojoderecho, String anotaciones) {
         this.id = id;
         this.resultado = resultado;
+        this.examenes = examenes;
+        this.exploracion = exploracion;
         this.ojoizquierdo = ojoizquierdo;
         this.ojoderecho = ojoderecho;
         this.anotaciones = anotaciones;
