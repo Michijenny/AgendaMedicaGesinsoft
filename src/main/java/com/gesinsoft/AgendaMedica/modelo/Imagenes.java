@@ -4,6 +4,7 @@
  */
 package com.gesinsoft.AgendaMedica.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -30,7 +31,8 @@ public class Imagenes {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idImagen;
+    @Column(name = "idImagen")
+    private Integer id;
     private Date fecha;
     private String path;
     private String nota;
@@ -40,8 +42,8 @@ public class Imagenes {
     public Imagenes() {
     }
 
-    public Imagenes(Integer idImagen, Integer idPaciente, Date fecha, String path, String nota, String tipo, String idAutor, String firma) {
-        this.idImagen = idImagen;
+    public Imagenes(Integer id, Integer idPaciente, Date fecha, String path, String nota, String tipo, String idAutor, String firma) {
+        this.id = id;
         this.fecha = fecha;
         this.path = path;
         this.nota = nota;
@@ -49,14 +51,14 @@ public class Imagenes {
         this.firma = firma;
     }
 
-    //RELACION TABLA IMAGENES - PACIENTE
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
-    private Doctor idAutor;
-
     //RELACION TABLA IMAGENES - DOCTOR
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
+    private Doctor id_autor;
+
+    //RELACION TABLA IMAGENES - PACIENTE
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")
-    private Paciente idPaciente;
+    private Paciente id_paciente;
 
 }

@@ -4,7 +4,6 @@
  */
 package com.gesinsoft.AgendaMedica.modelo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -30,7 +29,8 @@ public class Oftalmologia {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    
+    private Integer idOdontologia;
     private String fecha;
     private String resultado;
     private String ojoizquierdo;
@@ -41,7 +41,7 @@ public class Oftalmologia {
     }
 
     public Oftalmologia(Integer id, String resultado, String ojoizquierdo, String ojoderecho, String anotaciones) {
-        this.id = id;
+        this.idOdontologia = id;
         this.resultado = resultado;
         this.ojoizquierdo = ojoizquierdo;
         this.ojoderecho = ojoderecho;
@@ -53,5 +53,4 @@ public class Oftalmologia {
     @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")
     private Paciente idPaciente;
 
-    
 }

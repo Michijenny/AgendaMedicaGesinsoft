@@ -5,7 +5,6 @@
 package com.gesinsoft.AgendaMedica.controller;
 
 import com.gesinsoft.AgendaMedica.modelo.Libros;
-import com.gesinsoft.AgendaMedica.service.LibrosServicelmpl;
 import com.gesinsoft.AgendaMedica.servicios.LibrosService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +60,7 @@ public class LibrosController {
                 lib.setEstado(l.getEstado());
                 lib.setKeywords(l.getKeywords());
                 lib.setNotas(l.getNotas());
-                lib.setIdDoctor(l.getIdDoctor());
+                lib.setIddoctor(l.getIddoctor());
                 lib.setCompartido(l.getCompartido());
                 lib.setDigital(l.getDigital());
                 return new ResponseEntity<>(libroService.save(lib), HttpStatus.OK);

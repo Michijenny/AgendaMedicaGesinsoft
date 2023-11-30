@@ -30,8 +30,8 @@ public class Libros {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idLibro;
-    @Column(unique = true)
+    @Column(name = "idLibro")
+    private Integer id;
     private String titulo;
     private String autor;
     private String edicion;
@@ -45,8 +45,8 @@ public class Libros {
     public Libros() {
     }
 
-    public Libros(Integer idLibro, String titulo, String autor, String edicion, String ubicacion, String estado, String keywords, String notas, Long idDoctor, String compartido, String digital) {
-        this.idLibro = idLibro;
+    public Libros(Integer id, String titulo, String autor, String edicion, String ubicacion, String estado, String keywords, String notas, Long idDoctor, String compartido, String digital) {
+        this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.edicion = edicion;
@@ -61,6 +61,6 @@ public class Libros {
     //RELACION CON LA TABLA LIBROS - DOCTOR
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
-    private Doctor idDoctor;
+    private Doctor iddoctor;
 
 }

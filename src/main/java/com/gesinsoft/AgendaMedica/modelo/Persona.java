@@ -11,10 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,7 +30,6 @@ public class Persona {
     private Integer idPersona;
     @Column(unique = true)
     private String documento;
-    //ATRIBUTO 
     private String nombre;
     private String fechanacimiento;
     private String email;

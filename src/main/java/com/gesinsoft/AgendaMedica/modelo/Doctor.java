@@ -5,6 +5,7 @@
 package com.gesinsoft.AgendaMedica.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,7 +32,8 @@ public class Doctor {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idDoctor;
+    @Column(name = "idDoctor")
+    private Integer id;
     private String nombre;
     private String clavesecreta;
     private String comentarios;
@@ -50,8 +52,8 @@ public class Doctor {
     public Doctor() {
     }
 
-    public Doctor(Integer idDoctor, Integer idRol, String nombre, String clavesecreta, String comentarios, String direccion, String especialidad, String telefono, String clave, String notaAuto, String nota, String comparte, String cfg, String cfgsec, String email, String matricula) {
-        this.idDoctor = idDoctor;
+    public Doctor(Integer id, Integer idRol, String nombre, String clavesecreta, String comentarios, String direccion, String especialidad, String telefono, String clave, String notaAuto, String nota, String comparte, String cfg, String cfgsec, String email, String matricula) {
+        this.id = id;
         this.nombre = nombre;
         this.clavesecreta = clavesecreta;
         this.comentarios = comentarios;
@@ -71,37 +73,33 @@ public class Doctor {
 
     //RELACION CON LA TABLA DOCTOR - VADEMECUM}
     @JsonIgnore
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "iddoctor")
     private List<Vademecum> vademecum;
 
     //RELACION CON LA TABLA DOCTOR - VADECATEG
     @JsonIgnore
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "iddoctor")
     private List<Vadecateg> vadecateg;
 
     //RELACION CON LA TABLA DOCTOR - IMAGENES 
     @JsonIgnore
-    @OneToMany(mappedBy = "idAutor")
+    @OneToMany(mappedBy = "id_autor")
     private List<Imagenes> imagenes;
 
     //RELACION LA TABLA DOCTOR - DATA
     @JsonIgnore
-    @OneToMany(mappedBy = "idMedico")
+    @OneToMany(mappedBy = "iddoctor")
     private List<Datas> data;
 
-    //RELACION LA TABLA DOCTOR - IMAGENES
-    @JsonIgnore
-    @OneToMany(mappedBy = "idDoctor")
-    private List<Libreta> libreta;
 
     //RELACION CON LA TABLA DOCTOR- LIBROS
     @JsonIgnore
-    @OneToMany(mappedBy = "idDoctor")
+    @OneToMany(mappedBy = "iddoctor")
     private List<Libros> libro;
 
     //RELACION DE DOCTOR CON PACIENTE
     @JsonIgnore
-    @OneToMany(mappedBy = "idAutor")
+    @OneToMany(mappedBy = "id_autor")
     private List <Paciente> paciente;
     
   

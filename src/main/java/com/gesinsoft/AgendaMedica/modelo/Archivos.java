@@ -49,7 +49,6 @@ public class Archivos {
         this.idPaciente = idPaciente;
     }
 
-    
     //RELACION LA TABLA ARCHIVOS CON PACIENTE
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")

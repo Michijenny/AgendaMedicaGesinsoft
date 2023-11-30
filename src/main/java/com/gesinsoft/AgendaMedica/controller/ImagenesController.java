@@ -5,7 +5,6 @@
 package com.gesinsoft.AgendaMedica.controller;
 
 import com.gesinsoft.AgendaMedica.modelo.Imagenes;
-import com.gesinsoft.AgendaMedica.service.ImagenesServicelmpl;
 import com.gesinsoft.AgendaMedica.servicios.ImagenesService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,12 +53,14 @@ public class ImagenesController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
+                ima.setId(i.getId());
                 ima.setFecha(i.getFecha());
                 ima.setPath(i.getPath());
                 ima.setNota(i.getNota());
                 ima.setTipo(i.getTipo());
-                ima.setIdAutor(i.getIdAutor());
-                ima.setFirma(i.getFirma());
+                ima.setFirma(i.getFirma());            
+                ima.setId_autor(i.getId_autor());
+                ima.setId_paciente(i.getId_paciente());
                 return new ResponseEntity<>(imagenService.save(ima), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

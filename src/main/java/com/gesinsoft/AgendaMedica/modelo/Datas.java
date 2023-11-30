@@ -4,6 +4,7 @@
  */
 package com.gesinsoft.AgendaMedica.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +16,6 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import javax.validation.constraints.Size;
 
 /**
  * s
@@ -31,12 +31,13 @@ public class Datas {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idData;
+    @Column(name = "idData")
+    private Integer id;
     private String variables;
     private String valor;
 
-    public Datas(Integer idData, String variable, String valor) {
-        this.idData = idData;
+    public Datas(Integer id, String variable, String valor) {
+        this.id = id;
         this.variables = variable;
         this.valor = valor;
 
@@ -46,9 +47,8 @@ public class Datas {
     }
 
     //RELACION DE LA TABLA DATA CON EL DOCTOR 
-    //RELACION TABLA IMAGENES - PACIENTE
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
-    private Doctor idMedico;
+    private Doctor iddoctor;
 
 }

@@ -33,8 +33,8 @@ public class Vadecateg {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCategoria;
-    @Column(unique = true)
+    @Column(name = "idVadecateg")
+    private Integer id;
     private String titulo;
     private String tipo;
 
@@ -42,8 +42,8 @@ public class Vadecateg {
     public Vadecateg() {
     }
 
-    public Vadecateg(Integer idCategoria, String titulo, String tipo) {
-        this.idCategoria = idCategoria;
+    public Vadecateg(Integer id, String titulo, String tipo) {
+        this.id = id;
         this.titulo = titulo;
         this.tipo = tipo;
     }
@@ -51,11 +51,11 @@ public class Vadecateg {
     //RELACION CON LA TABLA VADECATEG/ DOCTOR 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
-    private Doctor doctor;
+    private Doctor iddoctor;
 
     //RELACION TABLA VADECATEG - VADEMECUM
     @JsonIgnore
-    @OneToMany(mappedBy = "vadecateg")
+    @OneToMany(mappedBy = "id_categoria")
     private List<Vademecum> vademecum;
 
 }

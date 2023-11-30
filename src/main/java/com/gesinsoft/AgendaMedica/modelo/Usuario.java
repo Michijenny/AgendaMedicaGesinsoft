@@ -4,7 +4,6 @@
  */
 package com.gesinsoft.AgendaMedica.modelo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -55,15 +54,6 @@ public class Usuario {
     @JoinColumn(name = "idPersona", referencedColumnName = "idPersona")
     private Persona persona;
 
-    //
-    /* @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "id_usuario"),
-            inverseJoinColumns = @JoinColumn(name = "id_rol")
-    )
-    private List<Rol> roles;
-     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
@@ -76,8 +66,7 @@ public class Usuario {
     //RELACION USUARIO - DOCTOR
     @OneToOne(mappedBy = "user")
     private Doctor doctor;
-    
-    
+
     //RELACION USUARIO - ADMINISTRADOR
     @OneToOne(mappedBy = "user")
     private Administrador administrador;

@@ -12,19 +12,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.Set;
-import com.gesinsoft.AgendaMedica.modelo.Rol;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import java.util.HashSet;
-import java.util.List;
-import org.antlr.v4.runtime.misc.NotNull;
 
 /**
  *

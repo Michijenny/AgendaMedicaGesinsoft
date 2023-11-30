@@ -56,6 +56,8 @@ public class AntropometriaController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
+                ant.setIdAntropometria(a.getIdAntropometria());
+                ant.setFecha(a.getFecha());
                 ant.setEdad(a.getEdad());
                 ant.setPeso(a.getPeso());
                 ant.setTalla(a.getTalla());

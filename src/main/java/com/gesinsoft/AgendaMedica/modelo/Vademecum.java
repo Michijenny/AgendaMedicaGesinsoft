@@ -4,6 +4,7 @@
  */
 package com.gesinsoft.AgendaMedica.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -11,9 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,8 +30,8 @@ public class Vademecum {
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idVademecum")
     private Integer id;
-    @NotNull
     private String compartido;
     private String laboratorio;
     private String medicamento;
@@ -65,11 +64,11 @@ public class Vademecum {
     //RELACION CON LA TABLA VADEMECUM / DOCTOR
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
-    private Doctor doctor;
+    private Doctor iddoctor;
 
     //RELACION CON LA TABLA VADEMECUM - VADECATEG
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria")
-    private Vadecateg vadecateg;
+    @JoinColumn(name = "idVadecateg", referencedColumnName = "idVadecateg")
+    private Vadecateg id_categoria;
 
 }

@@ -5,7 +5,6 @@
 package com.gesinsoft.AgendaMedica.controller;
 
 import com.gesinsoft.AgendaMedica.modelo.Datas;
-import com.gesinsoft.AgendaMedica.service.DataServicelmpl;
 import com.gesinsoft.AgendaMedica.servicios.DataService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +53,7 @@ public class DataController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                data.setIdMedico(d.getIdMedico());
+                data.setIddoctor(d.getIddoctor());
                 data.setValor(d.getValor());
                 data.setVariables(d.getVariables());
                 return new ResponseEntity<>(dataService.save(data), HttpStatus.OK);
