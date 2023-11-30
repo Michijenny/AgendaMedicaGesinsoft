@@ -35,9 +35,8 @@ public class AntropometriaController {
 
     @GetMapping("/listar")
     public ResponseEntity<List<Antropometria>> listarAntropometria() {
-        System.out.println("ANTROPOMETRIA");
-        List<Antropometria> apellido = antropometriaService.findByAll();
-        apellido.forEach(elemento -> System.out.println(elemento.getIdPaciente()));
+
+
         return new ResponseEntity<>(antropometriaService.findByAll(),
                 HttpStatus.OK);
     }
