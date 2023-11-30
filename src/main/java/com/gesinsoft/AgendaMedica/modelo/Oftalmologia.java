@@ -33,6 +33,8 @@ public class Oftalmologia {
     private Integer idOdontologia;
     private String fecha;
     private String resultado;
+    private String examenes;
+    private String exploracion;
     private String ojoizquierdo;
     private String ojoderecho;
     private String anotaciones;
@@ -40,13 +42,7 @@ public class Oftalmologia {
     public Oftalmologia() {
     }
 
-    public Oftalmologia(Integer id, String resultado, String ojoizquierdo, String ojoderecho, String anotaciones) {
-        this.idOdontologia = id;
-        this.resultado = resultado;
-        this.ojoizquierdo = ojoizquierdo;
-        this.ojoderecho = ojoderecho;
-        this.anotaciones = anotaciones;
-    }
+
 
     //RELACION CON LA TABLA PACIENTE
     @ManyToOne(fetch = FetchType.EAGER)

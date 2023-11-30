@@ -56,6 +56,8 @@ public class OftalmologiaController {
             try {
                 oft.setFecha(o.getFecha());
                 oft.setResultado(o.getResultado());
+                oft.setExamenes(o.getExamenes());
+                oft.setExploracion(o.getExploracion());
                 oft.setOjoizquierdo(o.getOjoizquierdo());
                 oft.setOjoderecho(o.getOjoderecho());
                 oft.setAnotaciones(o.getAnotaciones());
