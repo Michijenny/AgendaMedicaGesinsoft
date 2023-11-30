@@ -30,7 +30,7 @@ public class Oftalmologia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
-    private Integer idOdontologia;
+    private Integer idOftamologia;
     private String fecha;
     private String resultado;
     private String examenes;
