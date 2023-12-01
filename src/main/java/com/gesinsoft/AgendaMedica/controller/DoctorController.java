@@ -54,7 +54,7 @@ public class DoctorController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                doc.setId(d.getId());
+
                 doc.setNombre(d.getNombre());
                 doc.setClavesecreta(d.getClavesecreta());
                 doc.setComentarios(d.getComentarios());

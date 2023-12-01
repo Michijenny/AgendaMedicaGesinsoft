@@ -61,7 +61,7 @@ public class LibretaController {
                 libre.setWeb(l.getWeb());
                 libre.setDireccion(l.getDireccion());
                 libre.setNotas(l.getNotas());
-                return new ResponseEntity<>(libretaService.save(l), HttpStatus.OK);
+                return new ResponseEntity<>(libretaService.save(libre), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

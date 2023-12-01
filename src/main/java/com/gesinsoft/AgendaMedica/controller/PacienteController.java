@@ -90,7 +90,7 @@ public class PacienteController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-                pac.setId(p.getId());
+              
                 pac.setApellido(p.getApellido());
                 pac.setNombre(p.getNombre());
                 pac.setDocumento(p.getDocumento());
