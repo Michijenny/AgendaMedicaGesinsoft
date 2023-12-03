@@ -70,6 +70,10 @@ public class Doctor {
         this.matricula = matricula;
 
     }
+    @JsonIgnore
+    @OneToMany(mappedBy = "idDoctor")
+    private List<Turno> turno;
+
 
     //RELACION CON LA TABLA DOCTOR - VADEMECUM}
     @JsonIgnore

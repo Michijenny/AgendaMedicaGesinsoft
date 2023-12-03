@@ -85,7 +85,9 @@ public class Paciente {
     @OneToMany(mappedBy = "idPaciente")
     private List<Antropometria> antropometria;
 
-    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idturno", referencedColumnName = "idTurno")
+    private Turno idTurno;
     //RELACION CON LA TABLA ARCHIVOS
     @JsonIgnore
     @OneToMany(mappedBy = "idPaciente")
