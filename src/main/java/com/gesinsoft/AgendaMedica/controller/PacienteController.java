@@ -5,7 +5,6 @@
 package com.gesinsoft.AgendaMedica.controller;
 
 import com.gesinsoft.AgendaMedica.modelo.Paciente;
-import com.gesinsoft.AgendaMedica.service.PacienteServicelmpl;
 import com.gesinsoft.AgendaMedica.servicios.PacienteService;
 import com.gesinsoft.AgendaMedica.servicios.StorageService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -84,7 +83,9 @@ public class PacienteController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Paciente> actualizarPaciente(@PathVariable Integer id, @RequestBody Paciente p) {
+    public ResponseEntity<Paciente> actualizarPaciente(@PathVariable Integer id, @RequestBody Paciente p,
+            @RequestPart(value = "file", required = false) MultipartFile multipartFile,
+            HttpServletRequest request) {
         Paciente pac = pacienteService.findById(id);
         if (pac == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -126,6 +127,29 @@ public class PacienteController {
                 pac.setTipodocumento(p.getTipodocumento());
                 pac.setAbrir(p.getAbrir());
                 pac.setGenero(p.getGenero());
+                //Atualizar la foto
+                if (multipartFile != null && !multipartFile.isEmpty()) {
+                    String path = storageService.store(multipartFile);
+                    String host = request.getRequestURL().toString().replace(request.getRequestURI(), "");
+                    String url = ServletUriComponentsBuilder
+                            .fromHttpUrl(host)
+                            .path("/api/usuarios/")
+                            .path(path)
+                            .toUriString();
+
+                    // Eliminar la foto  anterior si existe
+                    if (p.getFoto() != null) {
+                        String[] fotoParts = p.getFoto().split("/");
+                        String fotoFilename = fotoParts[fotoParts.length - 1];
+                        storageService.delete(fotoFilename); // Elimina el archivo del almacenamiento
+                    }
+
+                    pac.setFoto(url); // Actualiza la nueva foto
+                } else if (p.getFoto() != null) {
+                    pac.setFoto(p.getFoto());
+                } else {
+                    pac.setFoto(null); // Actualiza el avatar a null
+                }
                 return new ResponseEntity<>(pacienteService.save(pac), HttpStatus.OK);
             } catch (DataAccessException e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

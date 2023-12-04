@@ -49,8 +49,6 @@ public class Persona {
         this.telefono = telefono;
     }
 
-    
-
     //RELACION PERSONA USUARIO
     @JsonIgnore
     @OneToMany(mappedBy = "persona")
