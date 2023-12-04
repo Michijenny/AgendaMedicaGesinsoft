@@ -22,15 +22,17 @@ public class Turno {
     private Integer id;
     private String turno;
     private String fecha;
+    private String hora;
 
     public Turno() {
 
     }
 
-    public Turno(Integer id, String turno, String fecha) {
+    public Turno(Integer id, String turno, String fecha,String hora) {
         this.id = id;
         this.turno = turno;
         this.fecha = fecha;
+        this.hora = hora;
     }
     @JsonIgnore
     @OneToMany(mappedBy = "idTurno")

@@ -43,6 +43,7 @@ public class TurnoController {
 
                 tur.setFecha(d.getFecha());
                 tur.setTurno(d.getTurno());
+                tur.setHora(d.getHora());
 
 
                 return new ResponseEntity<>(turnoService.save(tur), HttpStatus.OK);
