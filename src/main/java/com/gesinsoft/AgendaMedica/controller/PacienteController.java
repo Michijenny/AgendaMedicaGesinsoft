@@ -58,6 +58,8 @@ public class PacienteController {
                 HttpStatus.OK);
     }
 
+    
+    //CREAR FOTO CON PACIENTE
     @PostMapping("/crear")
     public ResponseEntity<Paciente> crearPaciente(
             @RequestBody Paciente p,
@@ -82,6 +84,8 @@ public class PacienteController {
                 HttpStatus.CREATED);
     }
 
+    
+    //ACTUALIZAR PACIENTE CON FOTO
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<Paciente> actualizarPaciente(@PathVariable Integer id, @RequestBody Paciente p,
             @RequestPart(value = "file", required = false) MultipartFile multipartFile,

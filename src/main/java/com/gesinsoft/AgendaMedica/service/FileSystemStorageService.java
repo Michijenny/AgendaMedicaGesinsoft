@@ -32,7 +32,7 @@ public class FileSystemStorageService implements StorageService {
 
     private Path rootLocation;
 
-    private final static String UPLOADS_FOLDER = "almacenamientoArchivos";
+    private final static String UPLOADS_FOLDER = "almacenaArchivossubidos";
 
     @Override
     @PostConstruct

@@ -80,23 +80,6 @@ public class AuthController {
         }
     }
 
-    //registro
-    //ESTE METODO ES PARA CUANDO EL ROL VIENE DE UNA CLASE EMUN
-    /* @PostMapping("/register")
-    public ResponseEntity<Object> resgister(@RequestBody Usuario user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
-        }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        List<Rol> addRol = new ArrayList<>();
-        if(user.getRoles().isEmpty()){
-           addRol.add(rolService.findByRolNombre(RolNombres.ROL_PACIENTE).get());
-           user.setRoles(addRol);
-        }
-        userService.save(user);
-        return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
-    }*/
-    
    /* @PostMapping("/register")
     public ResponseEntity<Usuario> crear(@RequestBody Usuario c) {
         try {
