@@ -4,6 +4,7 @@ package com.gesinsoft.AgendaMedica.modelo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Data;
 import lombok.Getter;
@@ -21,18 +22,18 @@ public class Turno {
     @Column(name = "idTurno")
     private Integer id;
     private String turno;
-    private String fecha;
-    private String hora;
+    private LocalDateTime fecha;
+
 
     public Turno() {
 
     }
 
-    public Turno(Integer id, String turno, String fecha,String hora) {
+    public Turno(Integer id, String turno, LocalDateTime fecha) {
         this.id = id;
         this.turno = turno;
         this.fecha = fecha;
-        this.hora = hora;
+
     }
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idpaciente", referencedColumnName = "idPaciente")
