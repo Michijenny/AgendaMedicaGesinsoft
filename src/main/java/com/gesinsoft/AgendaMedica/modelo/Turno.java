@@ -35,9 +35,10 @@ public class Turno {
         this.fecha = fecha;
 
     }
-    @JsonIgnore
-    @OneToMany(mappedBy = "idTurno")
-    private List<Paciente> paciente;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idpaciente", referencedColumnName = "idPaciente")
+    private Paciente idPaciente;
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "iddoctor", referencedColumnName = "idDoctor")
