@@ -66,7 +66,7 @@ public class PacienteController {
             @RequestPart(value = "file", required = false) MultipartFile multipartFile,
             HttpServletRequest request) {
         //Ingreso de la foto del paciente    
-        if (multipartFile != null && !multipartFile.isEmpty()) {
+     /*   if (multipartFile != null && !multipartFile.isEmpty()) {
             String path = storageService.store(multipartFile);
             String host = request.getRequestURL().toString().replace(request.getRequestURI(), "");
             String url = ServletUriComponentsBuilder
@@ -78,7 +78,7 @@ public class PacienteController {
         } else {
             // Establecer foto a nulo (o a una ruta predeterminada de foto nulo)
             p.setFoto(null);
-        }
+        }*/
 
         return new ResponseEntity<>(pacienteService.save(p),
                 HttpStatus.CREATED);
