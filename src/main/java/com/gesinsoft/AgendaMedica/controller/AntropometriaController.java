@@ -5,6 +5,7 @@
 package com.gesinsoft.AgendaMedica.controller;
 
 import com.gesinsoft.AgendaMedica.modelo.Antropometria;
+import com.gesinsoft.AgendaMedica.modelo.Turno;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +43,7 @@ public class AntropometriaController {
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<Antropometria> crearAntropometria(
+    public ResponseEntity<Antropometria> crearTurno(
             @RequestBody Antropometria a) {
         return new ResponseEntity<>(antropometriaService.save(a),
                 HttpStatus.CREATED);
