@@ -41,7 +41,7 @@ public class TurnoController {
         } else {
             try {
 
-                tur.setFecha(d.getFecha());
+               // tur.setFecha(d.getFecha());
                 tur.setTurno(d.getTurno());
 
 

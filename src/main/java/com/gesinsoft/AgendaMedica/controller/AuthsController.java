@@ -23,11 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.core.Authentication;
 import com.gesinsoft.AgendaMedica.modelo.Usuario;
 import com.gesinsoft.AgendaMedica.security.dtos.JwtDto;
-import com.gesinsoft.AgendaMedica.modelo.Rol;
 import com.gesinsoft.AgendaMedica.security.model.Message;
 import com.gesinsoft.AgendaMedica.servicios.RolService;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.gesinsoft.AgendaMedica.security.dtos.NewUser;
 import com.gesinsoft.AgendaMedica.servicios.UsuarioService;
@@ -39,7 +36,7 @@ import com.gesinsoft.AgendaMedica.servicios.UsuarioService;
 
 @CrossOrigin(origins = {"*"})
 @RestController
-@RequestMapping("/auths")
+@RequestMapping("/auth")
 public class AuthsController {
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
@@ -64,12 +61,12 @@ public class AuthsController {
             return new ResponseEntity<>(new Message("Revise sus credenciales"), HttpStatus.BAD_REQUEST);
         }
         try {
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword());
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginUser.getNombre(), loginUser.getClavesecreta());
             Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             String jwt = jwtProvider.generateToken(authentication);
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            Usuario user = userService.findByUsername(userDetails.getUsername());
+            Usuario user = userService.findByNombre(userDetails.getUsername());
             JwtDto jwtDto = new JwtDto(jwt, user);
             return new ResponseEntity<>(jwtDto, HttpStatus.OK);
         } catch (Exception e) {
@@ -89,7 +86,11 @@ public class AuthsController {
         }
     }
 */
-    @PostMapping("/registers")
+    
+    
+    
+    
+   /* @PostMapping("/registers")
     public ResponseEntity<Object> resgister(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
@@ -100,6 +101,18 @@ public class AuthsController {
             roles.add(roleService.findByRolNombre(rol.getRolNombre()));
         }
         user.setRoles(roles);
+        userService.save(user);
+        return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
+    }*/
+    
+    @PostMapping("/registers")
+    public ResponseEntity<Object> resgister(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
+        }
+        Usuario user = new Usuario(newUser.getNombre(), passwordEncoder.encode(newUser.getClavesecreta()), newUser.getComentarios() ,newUser.getDireccion()
+        , newUser.getEspecialidad(), newUser.getTelefono(),  newUser.getClave(), newUser.getNotaAuto(), newUser.getNota(), newUser.getComparte()
+        , newUser.getCfg(), newUser.getCfgsec(), newUser.getEmail(), newUser.getMatricula());
         userService.save(user);
         return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
     }

@@ -33,7 +33,7 @@ public class Rol {
     private String rolNombre;
 
     //RELACION 
-    @ManyToMany(mappedBy = "roles")
-    private List<Usuario> usuarios;
+  //  @ManyToMany(mappedBy = "roles")
+   // private List<Usuario> usuarios;
 
 }

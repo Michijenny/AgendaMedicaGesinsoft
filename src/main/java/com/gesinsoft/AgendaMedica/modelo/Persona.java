@@ -50,8 +50,8 @@ public class Persona {
     }
 
     //RELACION PERSONA USUARIO
-    @JsonIgnore
+   /* @JsonIgnore
     @OneToMany(mappedBy = "persona")
-    private List<Usuario> usuario;
+    private List<Usuario> usuario;*/
 
 }

@@ -12,6 +12,9 @@ import java.io.Serializable;
  */
 public interface UsuarioService extends GenericService<Usuario, Integer> {
     
-    Usuario findByUsername(String username);
-    boolean existsByUsername(String username);
+   // Usuario findByUsername(String username);
+   // boolean existsByUsername(String username);
+    
+    Usuario findByNombre(String username);
+    boolean existsByNombre(String username);
 }

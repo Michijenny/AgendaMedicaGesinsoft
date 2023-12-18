@@ -27,7 +27,7 @@ public class UsuarioServicelmpl extends GenericServiceImpl<Usuario, Integer> imp
         return usuarioRepository;
     }
 
-    @Override
+   /* @Override
     public Usuario findByUsername(String username) {
         return usuarioRepository.findByUsername(username);
     }
@@ -35,6 +35,16 @@ public class UsuarioServicelmpl extends GenericServiceImpl<Usuario, Integer> imp
     @Override
     public boolean existsByUsername(String username) {
         return usuarioRepository.existsByUsername(username);
+    }*/
+    
+    @Override
+    public Usuario findByNombre(String username) {
+        return usuarioRepository.findByNombre(username);
     }
     
+
+    @Override
+    public boolean existsByNombre(String username) {
+        return usuarioRepository.existsByNombre(username);
+    }
 }

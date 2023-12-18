@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,19 +21,19 @@ public class Turno {
     @Column(name = "idTurno")
     private Integer id;
     private String turno;
-    private LocalDateTime fecha;
+  //  private LocalDateTime fecha;
 
 
     public Turno() {
 
     }
 
-    public Turno(Integer id, String turno, LocalDateTime fecha) {
+   /* public Turno(Integer id, String turno, LocalDateTime fecha) {
         this.id = id;
         this.turno = turno;
         this.fecha = fecha;
 
-    }
+    }*/
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idpaciente", referencedColumnName = "idPaciente")
     private Paciente idPaciente;

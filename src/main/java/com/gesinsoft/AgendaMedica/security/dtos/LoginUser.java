@@ -12,9 +12,14 @@ import lombok.Setter;
 @AllArgsConstructor
 public class LoginUser {
 
-    @NotBlank
+   /* @NotBlank
     private String username;
     @NotBlank
-    private String password;
+    private String password;*/
 
+    
+    @NotBlank
+    private String nombre;
+    @NotBlank
+    private String clavesecreta;
 }

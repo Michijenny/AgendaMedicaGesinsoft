@@ -18,10 +18,15 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     public UserDetailsServiceImpl(UsuarioRepository userRepository){
         this.userRepository = userRepository;
     }
-    @Override
+    /*@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
         Usuario user =  userRepository.findByUsername(username);
         return MainUser.build(user);
-    }
+    }*/
 
+    @Override
+    public UserDetails loadUserByUsername(String nombre) throws UsernameNotFoundException{
+        Usuario user =  userRepository.findByNombre(nombre);
+        return MainUser.build(user);
+    }
 }

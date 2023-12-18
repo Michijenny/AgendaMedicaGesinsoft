@@ -4,7 +4,6 @@
  */
 package com.gesinsoft.AgendaMedica.acceso;
 
-import com.gesinsoft.AgendaMedica.repository.UsuarioRepository;
 import com.gesinsoft.AgendaMedica.security.dtos.LoginUser;
 import com.gesinsoft.AgendaMedica.security.jwt.JwtProvider;
 import javax.validation.Valid;
@@ -24,13 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.core.Authentication;
 import com.gesinsoft.AgendaMedica.modelo.Usuario;
 import com.gesinsoft.AgendaMedica.security.dtos.JwtDto;
-import com.gesinsoft.AgendaMedica.modelo.Rol;
 import com.gesinsoft.AgendaMedica.security.model.Message;
 import com.gesinsoft.AgendaMedica.servicios.RolService;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.gesinsoft.AgendaMedica.security.dtos.NewUser;
 import com.gesinsoft.AgendaMedica.servicios.UsuarioService;
@@ -42,7 +36,7 @@ import com.gesinsoft.AgendaMedica.servicios.UsuarioService;
 
 @CrossOrigin(origins = {"*"})
 @RestController
-@RequestMapping("/auth")
+//@RequestMapping("/auth")
 public class AuthController {
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
@@ -61,7 +55,7 @@ public class AuthController {
         this.jwtProvider = jwtProvider;
     }
 
-    @PostMapping("/signIn")
+   /* @PostMapping("/signIn")
     public ResponseEntity<Object> login(@Valid @RequestBody LoginUser loginUser, BindingResult bidBindingResult) {
         if (bidBindingResult.hasErrors()) {
             return new ResponseEntity<>(new Message("Revise sus credenciales"), HttpStatus.BAD_REQUEST);
@@ -78,7 +72,7 @@ public class AuthController {
         } catch (Exception e) {
             return new ResponseEntity<>(new Message("Revise sus credenciales " + e), HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
 
    /* @PostMapping("/register")
     public ResponseEntity<Usuario> crear(@RequestBody Usuario c) {
@@ -91,19 +85,19 @@ public class AuthController {
         }
     }
 */
-    @PostMapping("/register")
-    public ResponseEntity<Object> resgister(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
-        }
-        Usuario user = new Usuario(newUser.getUsername(), passwordEncoder.encode(newUser.getPassword()), newUser.getEstado() ,newUser.getPersona());
-        List<Rol> roles = new ArrayList<>();
-        for (Rol rol : newUser.getRoles()) {
-            roles.add(roleService.findByRolNombre(rol.getRolNombre()));
-        }
-        user.setRoles(roles);
-        userService.save(user);
-        return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
-    }
+   // @PostMapping("/register")
+  // public ResponseEntity<Object> resgister(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
+//        if (bindingResult.hasErrors()) {
+//            return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
+//        }
+//        Usuario user = new Usuario(newUser.getUsername(), passwordEncoder.encode(newUser.getPassword()), newUser.getEstado() ,newUser.getPersona());
+//       /* List<Rol> roles = new ArrayList<>();
+//        for (Rol rol : newUser.getRoles()) {
+//            roles.add(roleService.findByRolNombre(rol.getRolNombre()));
+//        }*/
+//        //user.setRoles(roles);
+//        userService.save(user);
+//        return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
+//    }
 
 }
