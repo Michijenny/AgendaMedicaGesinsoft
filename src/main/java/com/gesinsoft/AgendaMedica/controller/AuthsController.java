@@ -28,6 +28,8 @@ import com.gesinsoft.AgendaMedica.servicios.RolService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.gesinsoft.AgendaMedica.security.dtos.NewUser;
 import com.gesinsoft.AgendaMedica.servicios.UsuarioService;
+import com.gesinsoft.AgendaMedica.servicios.DoctorService;
+import com.gesinsoft.AgendaMedica.modelo.Doctor;
 
 /**
  *
@@ -41,19 +43,20 @@ public class AuthsController {
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final PasswordEncoder passwordEncoder;
-    private final UsuarioService userService;
-    private final RolService roleService;
+    //private final UsuarioService userService;
+    //private final RolService roleService;
     private final JwtProvider jwtProvider;
+    private final DoctorService doctorService;
 
      @Autowired
-    public AuthsController(AuthenticationManagerBuilder authenticationManagerBuilder, PasswordEncoder passwordEncoder,
-                          UsuarioService userService, RolService roleService, JwtProvider jwtProvider) {
+     public AuthsController(AuthenticationManagerBuilder authenticationManagerBuilder, PasswordEncoder passwordEncoder, JwtProvider jwtProvider, DoctorService doctorService) {
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.passwordEncoder = passwordEncoder;
-        this.userService = userService;
-        this.roleService = roleService;
         this.jwtProvider = jwtProvider;
+        this.doctorService = doctorService;
     }
+     
+    
 
     @PostMapping("/sign")
     public ResponseEntity<Object> login(@Valid @RequestBody LoginUser loginUser, BindingResult bidBindingResult) {
@@ -66,8 +69,9 @@ public class AuthsController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             String jwt = jwtProvider.generateToken(authentication);
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            Usuario user = userService.findByNombre(userDetails.getUsername());
-            JwtDto jwtDto = new JwtDto(jwt, user);
+            //Usuario user = userService.findByNombre(userDetails.getUsername());
+            Doctor doc = doctorService.findByNombre(userDetails.getUsername());
+            JwtDto jwtDto = new JwtDto(jwt, doc);
             return new ResponseEntity<>(jwtDto, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(new Message("Revise sus credenciales " + e), HttpStatus.BAD_REQUEST);
@@ -86,6 +90,8 @@ public class AuthsController {
         }
     }
 */
+
+    
     
     
     
@@ -110,10 +116,10 @@ public class AuthsController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
         }
-        Usuario user = new Usuario(newUser.getNombre(), passwordEncoder.encode(newUser.getClavesecreta()), newUser.getComentarios() ,newUser.getDireccion()
+        Doctor doc = new Doctor(newUser.getNombre(), passwordEncoder.encode(newUser.getClavesecreta()), newUser.getComentarios() ,newUser.getDireccion()
         , newUser.getEspecialidad(), newUser.getTelefono(),  newUser.getClave(), newUser.getNotaAuto(), newUser.getNota(), newUser.getComparte()
         , newUser.getCfg(), newUser.getCfgsec(), newUser.getEmail(), newUser.getMatricula());
-        userService.save(user);
+        doctorService.save(doc);
         return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
     }
 

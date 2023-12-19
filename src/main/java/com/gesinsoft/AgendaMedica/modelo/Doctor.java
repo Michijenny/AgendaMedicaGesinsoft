@@ -35,6 +35,7 @@ public class Doctor {
     private String nombre;
     private String clavesecreta;
     private String comentarios;
+    
     private String direccion;
     private String especialidad;
     private String telefono;
@@ -68,6 +69,27 @@ public class Doctor {
         this.matricula = matricula;
 
     }
+
+    public Doctor(String nombre, String clavesecreta, String comentarios, String direccion, String especialidad, String telefono, String clave, String notaAuto, String nota, String comparte, String cfg, String cfgsec, String email, String matricula) {
+        this.nombre = nombre;
+        this.clavesecreta = clavesecreta;
+        this.comentarios = comentarios;
+        this.direccion = direccion;
+        this.especialidad = especialidad;
+        this.telefono = telefono;
+        this.clave = clave;
+        this.notaAuto = notaAuto;
+        this.nota = nota;
+        this.comparte = comparte;
+        this.cfg = cfg;
+        this.cfgsec = cfgsec;
+        this.email = email;
+        this.matricula = matricula;
+    }
+
+    
+    
+    
     @JsonIgnore
     @OneToMany(mappedBy = "idDoctor")
     private List<Turno> turno;

@@ -1,5 +1,6 @@
 package com.gesinsoft.AgendaMedica.security.model;
 
+import com.gesinsoft.AgendaMedica.modelo.Doctor;
 import com.gesinsoft.AgendaMedica.modelo.Usuario;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -55,24 +56,24 @@ public class MainUser implements UserDetails {
                 user.getEstado(),
                 authorities);
     }*/
-    public static MainUser build(Usuario user) {
+    public static MainUser build(Doctor doc) {
 
         return new MainUser(
-                user.getIdUsuario(),
-                user.getNombre(),
-                user.getClavesecreta(),
-                user.getComentarios(),
-                user.getDireccion(),
-                user.getEspecialidad(),
-                user.getTelefono(),
-                user.getClave(),
-                user.getNotaAuto(),
-                user.getNota(),
-                user.getComparte(),
-                user.getCfg(),
-                user.getCfgsec(),
-                user.getEmail(),
-                user.getMatricula(),
+                doc.getId(),
+                doc.getNombre(),
+                doc.getClavesecreta(),
+                doc.getComentarios(),
+                doc.getDireccion(),
+                doc.getEspecialidad(),
+                doc.getTelefono(),
+                doc.getClave(),
+                doc.getNotaAuto(),
+                doc.getNota(),
+                doc.getComparte(),
+                doc.getCfg(),
+                doc.getCfgsec(),
+                doc.getEmail(),
+                doc.getMatricula(),
                 Collections.emptyList()
         );
     }

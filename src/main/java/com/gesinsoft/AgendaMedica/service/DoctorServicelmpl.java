@@ -26,5 +26,16 @@ public class DoctorServicelmpl extends GenericServiceImpl<Doctor, Integer> imple
     public CrudRepository< Doctor, Integer> getDao() {
         return doctorRepository;
     }
+    
+     @Override
+    public Doctor findByNombre(String username) {
+        return doctorRepository.findByNombre(username);
+    }
+    
+
+    @Override
+    public boolean existsByNombre(String username) {
+        return doctorRepository.existsByNombre(username);
+    }
 
 }
