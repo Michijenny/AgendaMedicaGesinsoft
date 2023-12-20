@@ -54,18 +54,12 @@ public class DoctorController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-
                 doc.setNombre(d.getNombre());
-                doc.setClavesecreta(d.getClavesecreta());
-                doc.setComentarios(d.getComentarios());
                 doc.setDireccion(d.getDireccion());
                 doc.setEspecialidad(d.getEspecialidad());
                 doc.setTelefono(d.getTelefono());
                 doc.setClave(d.getClave());
-                doc.setNotaAuto(d.getNotaAuto());
-                doc.setNota(d.getNota());
                 doc.setCfg(d.getCfg());
-                doc.setCfgsec(d.getCfgsec());
                 doc.setEmail(d.getEmail());
                 doc.setMatricula(d.getMatricula());
                 return new ResponseEntity<>(doctorService.save(doc), HttpStatus.OK);

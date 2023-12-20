@@ -18,36 +18,25 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class MainUser implements UserDetails {
 
-    private Integer idUsuario;
-    //  private String username;
-    // private String password;
-    // private Boolean estado;
+    private Integer id;
     private String nombre;
-    private String clavesecreta;
-    private String comentarios;
     private String direccion;
     private String especialidad;
     private String telefono;
     private String clave;
-    private String notaAuto;
-    private String nota;
-    private String comparte;
     private String cfg;
-    private String cfgsec;
     private String email;
     private String matricula;
-
     private Collection<? extends GrantedAuthority> authorities;
 
+    //////////////////////////////////////////////////////////////////////////////
+    //ATRIBUTOS DE LA CLASE USUARIO QUE NO SE UTILIZARON
+    //  private String username;
+    // private String password;
+    // private Boolean estado;
+    
+
     /*public static MainUser build(Usuario user){
-        List<GrantedAuthority> authorities = user.getRoles().stream().map(role-> new SimpleGrantedAuthority(role.getRolnombre())).collect(Collectors.toList());
-        return new MainUser(user.getNombreUsuario(), user.getContraseña(), authorities);
-    }*/
- /* public static MainUser build(Usuario user){
-        List<GrantedAuthority> authorities = user.getRoles().stream().map(role-> new SimpleGrantedAuthority(role.getRolNombre().name())).collect(Collectors.toList());
-        return new MainUser(user.getUsername(), user.getPassword(), authorities);
-    }*/
- /*public static MainUser build(Usuario user){
         List<GrantedAuthority> authorities = user.getRoles().stream().map(role-> new SimpleGrantedAuthority(role.getRolNombre())).collect(Collectors.toList());
         return new MainUser(
                 user.getIdUsuario(),
@@ -61,17 +50,11 @@ public class MainUser implements UserDetails {
         return new MainUser(
                 doc.getId(),
                 doc.getNombre(),
-                doc.getClavesecreta(),
-                doc.getComentarios(),
                 doc.getDireccion(),
                 doc.getEspecialidad(),
                 doc.getTelefono(),
                 doc.getClave(),
-                doc.getNotaAuto(),
-                doc.getNota(),
-                doc.getComparte(),
                 doc.getCfg(),
-                doc.getCfgsec(),
                 doc.getEmail(),
                 doc.getMatricula(),
                 Collections.emptyList()
@@ -83,7 +66,7 @@ public class MainUser implements UserDetails {
         return authorities;
     }
 
-    //DESCOMENTAR
+    //DESCOMENTAR SE UTILIZA PARA LOS ATRIBUTOS DE USUARIO
     /* @Override
     public String getPassword() {
         return password;
@@ -93,9 +76,11 @@ public class MainUser implements UserDetails {
     public String getUsername() {
         return username;
     }*/
+    
+    //SE UTILIZA CON LOS ATRIBUTOS DOCTOR
     @Override
     public String getPassword() {
-        return clavesecreta;
+        return clave;
     }
 
     @Override

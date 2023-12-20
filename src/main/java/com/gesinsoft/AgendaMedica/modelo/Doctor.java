@@ -33,67 +33,43 @@ public class Doctor {
     @Column(name = "idDoctor")
     private Integer id;
     private String nombre;
-    private String clavesecreta;
-    private String comentarios;
-    
     private String direccion;
     private String especialidad;
     private String telefono;
     private String clave;
-    private String notaAuto;
-    private String nota;
-    private String comparte;
     private String cfg;
-    private String cfgsec;
     private String email;
     private String matricula;
 
     public Doctor() {
     }
 
-    public Doctor(Integer id, Integer idRol, String nombre, String clavesecreta, String comentarios, String direccion, String especialidad, String telefono, String clave, String notaAuto, String nota, String comparte, String cfg, String cfgsec, String email, String matricula) {
+    public Doctor(Integer id, String nombre, String direccion, String especialidad, String telefono, String clave, String cfg, String email, String matricula) {
         this.id = id;
         this.nombre = nombre;
-        this.clavesecreta = clavesecreta;
-        this.comentarios = comentarios;
         this.direccion = direccion;
         this.especialidad = especialidad;
         this.telefono = telefono;
         this.clave = clave;
-        this.notaAuto = notaAuto;
-        this.nota = nota;
-        this.comparte = comparte;
         this.cfg = cfg;
-        this.cfgsec = cfgsec;
         this.email = email;
         this.matricula = matricula;
-
     }
 
-    public Doctor(String nombre, String clavesecreta, String comentarios, String direccion, String especialidad, String telefono, String clave, String notaAuto, String nota, String comparte, String cfg, String cfgsec, String email, String matricula) {
+    public Doctor(String nombre, String direccion, String especialidad, String telefono, String clave, String cfg, String email, String matricula) {
         this.nombre = nombre;
-        this.clavesecreta = clavesecreta;
-        this.comentarios = comentarios;
         this.direccion = direccion;
         this.especialidad = especialidad;
         this.telefono = telefono;
         this.clave = clave;
-        this.notaAuto = notaAuto;
-        this.nota = nota;
-        this.comparte = comparte;
         this.cfg = cfg;
-        this.cfgsec = cfgsec;
         this.email = email;
         this.matricula = matricula;
     }
 
-    
-    
-    
     @JsonIgnore
     @OneToMany(mappedBy = "idDoctor")
     private List<Turno> turno;
-
 
     //RELACION CON LA TABLA DOCTOR - VADEMECUM}
     @JsonIgnore
@@ -115,7 +91,6 @@ public class Doctor {
     @OneToMany(mappedBy = "iddoctor")
     private List<Datas> data;
 
-
     //RELACION CON LA TABLA DOCTOR- LIBROS
     @JsonIgnore
     @OneToMany(mappedBy = "iddoctor")
@@ -124,9 +99,8 @@ public class Doctor {
     //RELACION DE DOCTOR CON PACIENTE
     @JsonIgnore
     @OneToMany(mappedBy = "id_autor")
-    private List <Paciente> paciente;
-    
-  
+    private List<Paciente> paciente;
+
     //RELACION CON LA TABLA DOCTOR /USUARIO
     /*@OneToOne
     @JoinColumn(name = "idUsuario")

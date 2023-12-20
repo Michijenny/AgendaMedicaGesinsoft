@@ -43,10 +43,12 @@ public class AuthsController {
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final PasswordEncoder passwordEncoder;
-    //private final UsuarioService userService;
-    //private final RolService roleService;
     private final JwtProvider jwtProvider;
     private final DoctorService doctorService;
+    
+    ////////////////////////////////////////////////////////////////////////////
+    //private final UsuarioService userService;
+    //private final RolService roleService;
 
      @Autowired
      public AuthsController(AuthenticationManagerBuilder authenticationManagerBuilder, PasswordEncoder passwordEncoder, JwtProvider jwtProvider, DoctorService doctorService) {
@@ -55,10 +57,8 @@ public class AuthsController {
         this.jwtProvider = jwtProvider;
         this.doctorService = doctorService;
     }
-     
-    
-
-    @PostMapping("/sign")
+       
+    @PostMapping("/signIn")
     public ResponseEntity<Object> login(@Valid @RequestBody LoginUser loginUser, BindingResult bidBindingResult) {
         if (bidBindingResult.hasErrors()) {
             return new ResponseEntity<>(new Message("Revise sus credenciales"), HttpStatus.BAD_REQUEST);
@@ -77,9 +77,21 @@ public class AuthsController {
             return new ResponseEntity<>(new Message("Revise sus credenciales " + e), HttpStatus.BAD_REQUEST);
         }
     }
+   
+    @PostMapping("/registers")
+    public ResponseEntity<Object> resgister(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
+        }
+        Doctor doc = new Doctor(newUser.getNombre(), passwordEncoder.encode(newUser.getClave()) ,newUser.getDireccion()
+        , newUser.getEspecialidad(), newUser.getTelefono(), newUser.getCfg(), newUser.getEmail(), newUser.getMatricula());
+        doctorService.save(doc);
+        return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
+    }
 
     
-   /* @PostMapping("/register")
+    
+     /* @PostMapping("/register")
     public ResponseEntity<Usuario> crear(@RequestBody Usuario c) {
         try {
             c.setEstado(true);
@@ -90,12 +102,7 @@ public class AuthsController {
         }
     }
 */
-
-    
-    
-    
-    
-    
+     
    /* @PostMapping("/registers")
     public ResponseEntity<Object> resgister(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -110,17 +117,4 @@ public class AuthsController {
         userService.save(user);
         return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
     }*/
-    
-    @PostMapping("/registers")
-    public ResponseEntity<Object> resgister(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
-        }
-        Doctor doc = new Doctor(newUser.getNombre(), passwordEncoder.encode(newUser.getClavesecreta()), newUser.getComentarios() ,newUser.getDireccion()
-        , newUser.getEspecialidad(), newUser.getTelefono(),  newUser.getClave(), newUser.getNotaAuto(), newUser.getNota(), newUser.getComparte()
-        , newUser.getCfg(), newUser.getCfgsec(), newUser.getEmail(), newUser.getMatricula());
-        doctorService.save(doc);
-        return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
-    }
-
 }

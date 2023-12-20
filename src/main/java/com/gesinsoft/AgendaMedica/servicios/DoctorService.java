@@ -13,7 +13,7 @@ import com.gesinsoft.AgendaMedica.service.GenericService;
  */
 public interface DoctorService extends GenericService<Doctor, Integer>{
     
-    Doctor findByNombre(String username);
-    boolean existsByNombre(String username);
+    Doctor findByNombre(String nombre);
+    boolean existsByNombre(String nombre);
     
 }

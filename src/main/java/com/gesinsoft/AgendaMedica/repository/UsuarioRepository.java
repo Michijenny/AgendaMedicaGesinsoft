@@ -13,13 +13,8 @@ import org.springframework.stereotype.Repository;
  * @author enriq
  */
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
-    
-    
-   // public Usuario findByUsername(String username);
-    public Usuario findByNombre(String nombre);
-   // boolean existsByUsername(String username);
-    boolean existsByNombre(String nombre);
-    
-    
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+
+    // public Usuario findByUsername(String username);
+    // boolean existsByUsername(String username);
 }
