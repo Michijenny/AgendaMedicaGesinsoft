@@ -15,11 +15,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.Authentication;
 import com.gesinsoft.AgendaMedica.modelo.Usuario;
 import com.gesinsoft.AgendaMedica.security.dtos.JwtDto;
@@ -30,6 +26,8 @@ import com.gesinsoft.AgendaMedica.security.dtos.NewUser;
 import com.gesinsoft.AgendaMedica.servicios.UsuarioService;
 import com.gesinsoft.AgendaMedica.servicios.DoctorService;
 import com.gesinsoft.AgendaMedica.modelo.Doctor;
+
+import java.util.List;
 
 /**
  *
@@ -78,7 +76,23 @@ public class AuthsController {
         }
     }
 
-    
+    @GetMapping("/listarr/{id}")
+    public ResponseEntity<?> getDoctorById(@PathVariable("id") Integer id) {
+        try {
+            Doctor nc = doctorService.findById(id);
+            if (nc != null) {
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("DOCTOR NO ENCONTRADO ", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @GetMapping("/listar")
+    public ResponseEntity<List<Doctor>> listarDoctor() {
+        return new ResponseEntity<>(doctorService.findByAll(),
+                HttpStatus.OK);
+    }
    /* @PostMapping("/register")
     public ResponseEntity<Usuario> crear(@RequestBody Usuario c) {
         try {
