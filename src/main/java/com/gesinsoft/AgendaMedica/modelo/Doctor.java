@@ -126,7 +126,11 @@ public class Doctor {
     @OneToMany(mappedBy = "id_autor")
     private List <Paciente> paciente;
     
-  
+   //RELACION DE DOCTOR CON RECETAS
+    @JsonIgnore
+    @OneToMany(mappedBy = "id_autor")
+    private List <Recetas> recetas;
+    
     //RELACION CON LA TABLA DOCTOR /USUARIO
     /*@OneToOne
     @JoinColumn(name = "idUsuario")
