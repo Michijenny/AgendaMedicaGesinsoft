@@ -61,10 +61,10 @@ public class Vademecum {
         this.stock = stock;
     }
 
-    //RELACION CON LA TABLA VADEMECUM / DOCTOR
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
-    private Doctor iddoctor;
+//    //RELACION CON LA TABLA VADEMECUM / DOCTOR
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
+//    private Doctor iddoctor;
 
     //RELACION CON LA TABLA VADEMECUM - VADECATEG
     @ManyToOne(fetch = FetchType.EAGER)

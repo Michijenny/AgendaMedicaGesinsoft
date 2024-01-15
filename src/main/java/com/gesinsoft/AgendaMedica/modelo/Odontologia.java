@@ -62,5 +62,10 @@ public class Odontologia {
     private Paciente idPaciente;
 
     
+    //RELACION CON LA TABLA DOCTOR
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
+    private Doctor iddoctor;
+
 
 }

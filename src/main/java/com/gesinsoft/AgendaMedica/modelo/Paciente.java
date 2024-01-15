@@ -115,10 +115,30 @@ public class Paciente {
     @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
     private Doctor id_autor;
 
-    //RELACION DE PACIENTE CON RECETAS
+//    //RELACION DE PACIENTE CON RECETAS
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "idpaciente")
+//    private List <Recetas> recetas;
+//    
+     //RELACION DE PACIENTE CON EVOLUCION
     @JsonIgnore
     @OneToMany(mappedBy = "idpaciente")
-    private List <Recetas> recetas;
+    private List <Evolucion> evolucion;
     
+     //RELACION DE PACIENTE CON CONSULTA
+    @JsonIgnore
+    @OneToMany(mappedBy = "idpaciente")
+    private List <Consulta> consulta;
     
+     //RELACION DE PACIENTE CON TRATAMIENTO
+    @JsonIgnore
+    @OneToMany(mappedBy = "idpaciente")
+    private List <Tratamiento> tratamiento;
+    
+     //RELACION DE PACIENTE CON DOCTORPACIENTE
+    @JsonIgnore
+    @OneToMany(mappedBy = "idpaciente")
+    private List <DoctorPaciente> doctorpaciente;
+
+
 }

@@ -12,7 +12,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.gesinsoft.AgendaMedica.modelo.Administrador;
 
 /**
  *

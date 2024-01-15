@@ -48,10 +48,10 @@ public class Vadecateg {
         this.tipo = tipo;
     }
 
-    //RELACION CON LA TABLA VADECATEG/ DOCTOR 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
-    private Doctor iddoctor;
+//    //RELACION CON LA TABLA VADECATEG/ DOCTOR 
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
+//    private Doctor iddoctor;
 
     //RELACION TABLA VADECATEG - VADEMECUM
     @JsonIgnore

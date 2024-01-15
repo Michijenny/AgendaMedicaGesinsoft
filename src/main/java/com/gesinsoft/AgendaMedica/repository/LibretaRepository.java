@@ -4,7 +4,7 @@
  */
 package com.gesinsoft.AgendaMedica.repository;
 
-import com.gesinsoft.AgendaMedica.modelo.Libreta;
+import com.gesinsoft.AgendaMedica.modelo.Proveedor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author enriq
  */
 @Repository
-public interface LibretaRepository extends JpaRepository<Libreta, Integer> {
+public interface LibretaRepository extends JpaRepository<Proveedor, Integer> {
 
 }

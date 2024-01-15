@@ -7,9 +7,12 @@ package com.gesinsoft.AgendaMedica.modelo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
@@ -90,20 +93,20 @@ public class Doctor {
     
     
     
-    @JsonIgnore
-    @OneToMany(mappedBy = "idDoctor")
-    private List<Turno> turno;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "idDoctor")
+//    private List<Turno> turno;
 
 
-    //RELACION CON LA TABLA DOCTOR - VADEMECUM}
-    @JsonIgnore
-    @OneToMany(mappedBy = "iddoctor")
-    private List<Vademecum> vademecum;
+//    //RELACION CON LA TABLA DOCTOR - VADEMECUM}
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "iddoctor")
+//    private List<Vademecum> vademecum;
 
-    //RELACION CON LA TABLA DOCTOR - VADECATEG
-    @JsonIgnore
-    @OneToMany(mappedBy = "iddoctor")
-    private List<Vadecateg> vadecateg;
+//    //RELACION CON LA TABLA DOCTOR - VADECATEG
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "iddoctor")
+//    private List<Vadecateg> vadecateg;
 
     //RELACION CON LA TABLA DOCTOR - IMAGENES 
     @JsonIgnore
@@ -126,13 +129,44 @@ public class Doctor {
     @OneToMany(mappedBy = "id_autor")
     private List <Paciente> paciente;
     
-   //RELACION DE DOCTOR CON RECETAS
+//   //RELACION DE DOCTOR CON RECETAS
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "id_autor")
+//    private List <Recetas> recetas;
+//    
+    //RELACION DE DOCTOR CON odontologia
+    @JsonIgnore
+    @OneToMany(mappedBy = "iddoctor")
+    private List <Odontologia> odontologia;
+    
+     //RELACION DE DOCTOR CON oftamologia
     @JsonIgnore
     @OneToMany(mappedBy = "id_autor")
-    private List <Recetas> recetas;
+    private List <Oftalmologia> oftalmologia;
     
     //RELACION CON LA TABLA DOCTOR /USUARIO
     /*@OneToOne
     @JoinColumn(name = "idUsuario")
     private Usuario user;*/
+    
+     //RELACION CON LA TABLA ESPECIALIDAD
+   @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idEspecialidad", referencedColumnName = "idEspecialidad")
+    private Especialidad idespecialidad;
+   
+    //RELACION DE DOCTOR CON HORARIOMEDICO
+    @JsonIgnore
+    @OneToMany(mappedBy = "iddoctor")
+    private List <HorarioMedico> horarioMedico;
+
+     //RELACION DE doctor CON horarioPaciente
+    @JsonIgnore
+    @OneToMany(mappedBy = "iddoctor")
+    private List <DoctorPaciente> doctorpaciente;
+
+     //RELACION DE DOCTOR CON PROVEEDORDOCTOR
+    @JsonIgnore
+    @OneToMany(mappedBy = "iddoctor")
+    private List <ProveedorDoctor> proveedorD;
+
 }

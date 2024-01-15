@@ -42,6 +42,17 @@ public class Oftalmologia {
     public Oftalmologia() {
     }
 
+    public Oftalmologia(Integer idOftamologia, String fecha, String resultado, String examenes, String exploracion, String ojoizquierdo, String ojoderecho, String anotaciones) {
+        this.idOftamologia = idOftamologia;
+        this.fecha = fecha;
+        this.resultado = resultado;
+        this.examenes = examenes;
+        this.exploracion = exploracion;
+        this.ojoizquierdo = ojoizquierdo;
+        this.ojoderecho = ojoderecho;
+        this.anotaciones = anotaciones;
+    }
+
 
 
     //RELACION CON LA TABLA PACIENTE
@@ -49,4 +60,8 @@ public class Oftalmologia {
     @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")
     private Paciente idPaciente;
 
+    //RELACION CON LA TABLA DOCTOR
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
+    private Doctor id_autor;
 }

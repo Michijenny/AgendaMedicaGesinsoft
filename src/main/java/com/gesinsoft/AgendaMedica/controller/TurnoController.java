@@ -42,9 +42,10 @@ public class TurnoController {
             try {
 
                // tur.setFecha(d.getFecha());
-                tur.setTurno(d.getTurno());
-
-
+                tur.setFecha(d.getFecha());
+                tur.setMotivo(d.getMotivo());
+                tur.setUbicacion(d.getUbicacion());
+//                tur.setFinalizado(d.get());
 
                 return new ResponseEntity<>(turnoService.save(tur), HttpStatus.OK);
             } catch (DataAccessException e) {

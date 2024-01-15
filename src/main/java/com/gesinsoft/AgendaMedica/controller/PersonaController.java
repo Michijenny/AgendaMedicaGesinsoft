@@ -47,6 +47,27 @@ public class PersonaController {
                 HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<Persona> eliminarAdministrador(@PathVariable Integer id) {
+        perService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    //LISTAR PERSONA POR ID
+     @GetMapping("/listar/{id}")
+    public ResponseEntity<?> getPersonaById(@PathVariable("id") Integer id){
+        try {
+            Persona nc = perService.findById(id);
+            if(nc != null){
+                return new ResponseEntity<>(nc, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("PERSONA NO ENCONTRADA",HttpStatus.NOT_FOUND);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    /*
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<Persona> actualizarPersona(@PathVariable Integer id, @RequestBody Persona p) {
         Persona per = perService.findById(id);
@@ -67,24 +88,7 @@ public class PersonaController {
         }
     }
 
-    @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Persona> eliminarAdministrador(@PathVariable Integer id) {
-        perService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
     
-    //LISTAR PERSONA POR ID
-     @GetMapping("/listar/{id}")
-    public ResponseEntity<?> getPersonaById(@PathVariable("id") Integer id){
-        try {
-            Persona nc = perService.findById(id);
-            if(nc != null){
-                return new ResponseEntity<>(nc, HttpStatus.OK);
-            }
-            return new ResponseEntity<>("PERSONA NO ENCONTRADA",HttpStatus.NOT_FOUND);
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
+}
+    */
 }

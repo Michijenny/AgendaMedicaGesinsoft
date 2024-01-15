@@ -4,7 +4,7 @@
  */
 package com.gesinsoft.AgendaMedica.controller;
 
-import com.gesinsoft.AgendaMedica.modelo.Libreta;
+import com.gesinsoft.AgendaMedica.modelo.Proveedor;
 import com.gesinsoft.AgendaMedica.service.LibretaServicelmpl;
 import com.gesinsoft.AgendaMedica.servicios.LibretaService;
 import java.util.List;
@@ -35,21 +35,21 @@ public class LibretaController {
     LibretaService libretaService;
 
     @GetMapping("/listar")
-    public ResponseEntity<List<Libreta>> listarLibreta() {
+    public ResponseEntity<List<Proveedor>> listarLibreta() {
         return new ResponseEntity<>(libretaService.findByAll(),
                 HttpStatus.OK);
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<Libreta> crearLibreta(
-            @RequestBody Libreta l) {
+    public ResponseEntity<Proveedor> crearLibreta(
+            @RequestBody Proveedor l) {
         return new ResponseEntity<>(libretaService.save(l),
                 HttpStatus.CREATED);
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Libreta> actualizarlibreta(@PathVariable Integer id, @RequestBody Libreta l) {
-        Libreta libre = libretaService.findById(id);
+    public ResponseEntity<Proveedor> actualizarlibreta(@PathVariable Integer id, @RequestBody Proveedor l) {
+        Proveedor libre = libretaService.findById(id);
         if (libre == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -69,7 +69,7 @@ public class LibretaController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Libreta> eliminarLibreta(@PathVariable Integer id) {
+    public ResponseEntity<Proveedor> eliminarLibreta(@PathVariable Integer id) {
         libretaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -78,7 +78,7 @@ public class LibretaController {
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> getLibretaById(@PathVariable("id") Integer id) {
         try {
-            Libreta nc = libretaService.findById(id);
+            Proveedor nc = libretaService.findById(id);
             if (nc != null) {
                 return new ResponseEntity<>(nc, HttpStatus.OK);
             }

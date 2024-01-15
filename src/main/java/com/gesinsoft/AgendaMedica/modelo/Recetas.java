@@ -53,13 +53,14 @@ public class Recetas {
 //    }
 
     //RELACIONES
-    ////RELACION CON LA TABLA RECETAS / DOCTOR
+//    ////RELACION CON LA TABLA RECETAS / DOCTOR
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
+//    private Doctor id_autor;
+//    
+    ////RELACION CON LA TABLA RECETAS / PACIENTE
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
-    private Doctor id_autor;
+    @JoinColumn(name = "id_tratamiento", referencedColumnName = "id_tratamiento")
+    private Tratamiento idtratamiento;
     
-    ////RELACION CON LA TABLA RECETAS / DOCTOR
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")
-    private Paciente idpaciente;
 }

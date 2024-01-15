@@ -4,13 +4,13 @@
  */
 package com.gesinsoft.AgendaMedica.servicios;
 
-import com.gesinsoft.AgendaMedica.modelo.Libreta;
+import com.gesinsoft.AgendaMedica.modelo.Proveedor;
 import com.gesinsoft.AgendaMedica.service.GenericService;
 
 /**
  *
  * @author ASUS ROG
  */
-public interface LibretaService extends GenericService<Libreta, Integer>{
+public interface LibretaService extends GenericService<Proveedor, Integer>{
     
 }

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.gesinsoft.AgendaMedica.service;
-import com.gesinsoft.AgendaMedica.modelo.Libreta;
+import com.gesinsoft.AgendaMedica.modelo.Proveedor;
 import com.gesinsoft.AgendaMedica.repository.LibretaRepository;
 import com.gesinsoft.AgendaMedica.servicios.LibretaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
  * @author enriq
  */
 @Service
-public class LibretaServicelmpl extends GenericServiceImpl<Libreta, Integer> implements LibretaService {
+public class LibretaServicelmpl extends GenericServiceImpl<Proveedor, Integer> implements LibretaService {
 
     @Autowired
     LibretaRepository libretaRepository;
 
     @Override
-    public CrudRepository<Libreta, Integer> getDao() {
+    public CrudRepository<Proveedor, Integer> getDao() {
         return libretaRepository;
     }
 
