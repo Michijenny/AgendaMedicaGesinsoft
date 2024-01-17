@@ -38,7 +38,6 @@ public class Doctor {
     private String nombre;
     private String clavesecreta;
     private String comentarios;
-    
     private String direccion;
     private String especialidad;
     private String telefono;
@@ -51,6 +50,10 @@ public class Doctor {
     private String email;
     private String matricula;
 
+    @ManyToOne
+    @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
+    private Persona persona;
+    
     public Doctor() {
     }
 
@@ -124,10 +127,11 @@ public class Doctor {
     @OneToMany(mappedBy = "iddoctor")
     private List<Libros> libro;
 
+    /*
     //RELACION DE DOCTOR CON PACIENTE
     @JsonIgnore
     @OneToMany(mappedBy = "id_autor")
-    private List <Paciente> paciente;
+    private List <Paciente> paciente;*/
     
 //   //RELACION DE DOCTOR CON RECETAS
 //    @JsonIgnore

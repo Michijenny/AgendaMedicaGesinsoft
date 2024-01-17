@@ -47,11 +47,14 @@ public class Turno {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")
     private Paciente idPaciente;
-    
+    /*
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_horarioMedico", referencedColumnName = "id_horarioMedico")
     private HorarioMedico idhorarioM;
-
+    */
+    
+    @ManyToOne
+    private HorarioMedico horarioMedico;
 //   @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "iddoctor", referencedColumnName = "idDoctor")
 //    private Doctor idDoctor;

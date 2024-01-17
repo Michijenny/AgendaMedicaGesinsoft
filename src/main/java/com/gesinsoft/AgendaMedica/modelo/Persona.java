@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_persona")
     private Integer idPersona;
     private String tipoDocumento;
     @Column(unique = true)
@@ -48,7 +50,9 @@ public class Persona {
     private int telefon3;
     private String direccion;
  
-
+    @ManyToOne
+    private Ciudad ciudad;
+    
     public Persona() {
     }
 

@@ -53,9 +53,10 @@ public class HorarioMedico {
     @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
     private Doctor iddoctor;
    
+   /*
     //RELACION DE HORARIOMEDICO con doctor
     @JsonIgnore
     @OneToMany(mappedBy = "idhorarioM")
     private List <Turno> turno;
-
+*/
 }

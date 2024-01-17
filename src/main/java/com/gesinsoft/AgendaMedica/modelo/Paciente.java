@@ -111,9 +111,10 @@ public class Paciente {
     private List<Imagenes> imagenes;
     
     //RELACION CON LA TABLA PACIENTE / DOCTOR
+    /*
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idDoctor", referencedColumnName = "idDoctor")
-    private Doctor id_autor;
+    private Doctor id_autor;*/
 
 //    //RELACION DE PACIENTE CON RECETAS
 //    @JsonIgnore
