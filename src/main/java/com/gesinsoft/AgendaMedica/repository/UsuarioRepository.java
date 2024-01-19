@@ -5,6 +5,9 @@
 package com.gesinsoft.AgendaMedica.repository;
 
 import com.gesinsoft.AgendaMedica.modelo.Usuario;
+
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,9 +20,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
     
     
    // public Usuario findByUsername(String username);
-    public Usuario findByNombre(String nombre);
+    public Optional<Usuario> findByUserName(String nombre);
    // boolean existsByUsername(String username);
-    boolean existsByNombre(String nombre);
+    boolean existsByUserName(String nombre);
     
     
 }

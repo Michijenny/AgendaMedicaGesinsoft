@@ -26,32 +26,33 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity (prePostEnabled = true)
+//@EnableGlobalMethodSecurity (prePostEnabled = true)
 public class MainSecurity {
 
+	@Autowired
     private UserDetailsServiceImpl userDetailsService;
 
     @Autowired
     private JwtEntryPoint jwtEntryPoint;
-
+    /*
     @Autowired
     public MainSecurity(UserDetailsServiceImpl userDetailsService, JwtEntryPoint jwtEntryPoint){
         this.userDetailsService = userDetailsService;
         this.jwtEntryPoint = jwtEntryPoint;
     }
-
+*/
     @Bean
-    public JwtTokenFilter jwtTokenFilter(){
+    JwtTokenFilter jwtTokenFilter(){
         return new JwtTokenFilter();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
+    DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
         authProvider.setUserDetailsService(userDetailsService);
@@ -61,7 +62,7 @@ public class MainSecurity {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtEntryPoint))
@@ -79,7 +80,7 @@ public class MainSecurity {
     }
 
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
+    CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:4200"));
         configuration.setAllowedMethods(List.of("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));

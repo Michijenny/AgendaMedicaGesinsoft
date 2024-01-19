@@ -1,6 +1,7 @@
 package com.gesinsoft.AgendaMedica.security.model;
 
 import com.gesinsoft.AgendaMedica.modelo.Doctor;
+import com.gesinsoft.AgendaMedica.modelo.Persona;
 import com.gesinsoft.AgendaMedica.modelo.Usuario;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class MainUser implements UserDetails {
 
     private Integer idUsuario;
@@ -56,6 +58,7 @@ public class MainUser implements UserDetails {
                 user.getEstado(),
                 authorities);
     }*/
+    /*
     public static MainUser build(Doctor doc) {
 
         return new MainUser(
@@ -76,8 +79,36 @@ public class MainUser implements UserDetails {
                 doc.getMatricula(),
                 Collections.emptyList()
         );
-    }
+    }*/
+/*
+    public static MainUser build(Persona per) {
 
+    	MainUser mainUser = new MainUser();
+    	
+    	mainUser.setpr
+    	
+        return new MainUser(
+        		per.getIdPersona(),
+        		per.getPrimerNombre(),
+                per.getSegundoNombre(),
+                per.getPrimerApellido(),
+                per.getSegundoApellido(),
+                per.get(),
+                doc.getTelefono(),
+                doc.getClave(),
+                doc.getNotaAuto(),
+                doc.getNota(),
+                doc.getComparte(),
+                doc.getCfg(),
+                doc.getCfgsec(),
+                doc.getEmail(),
+                doc.getMatricula(),
+                Collections.emptyList()
+        );
+    }*/
+    
+    
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;

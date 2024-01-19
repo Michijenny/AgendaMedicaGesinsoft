@@ -4,7 +4,6 @@
  */
 package com.gesinsoft.AgendaMedica.service;
 
-import java.io.Serializable;
 import org.springframework.stereotype.Service;
 import com.gesinsoft.AgendaMedica.modelo.Usuario;
 import com.gesinsoft.AgendaMedica.servicios.UsuarioService;
@@ -38,13 +37,14 @@ public class UsuarioServicelmpl extends GenericServiceImpl<Usuario, Integer> imp
     }*/
     
     @Override
-    public Usuario findByNombre(String username) {
-        return usuarioRepository.findByNombre(username);
+    public Usuario findByUserName(String username) {
+        return usuarioRepository.findByUserName(username)
+        		.orElseThrow(() -> new RuntimeException("User not found"));
     }
     
 
     @Override
-    public boolean existsByNombre(String username) {
-        return usuarioRepository.existsByNombre(username);
+    public boolean existsByUserName(String username) {
+        return usuarioRepository.existsByUserName(username);
     }
 }

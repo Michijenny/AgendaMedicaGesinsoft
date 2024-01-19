@@ -45,7 +45,7 @@ public class AuthController {
     private final RolService roleService;
     private final JwtProvider jwtProvider;
 
-     @Autowired
+    // @Autowired
     public AuthController(AuthenticationManagerBuilder authenticationManagerBuilder, PasswordEncoder passwordEncoder,
                           UsuarioService userService, RolService roleService, JwtProvider jwtProvider) {
         this.authenticationManagerBuilder = authenticationManagerBuilder;
@@ -73,18 +73,18 @@ public class AuthController {
             return new ResponseEntity<>(new Message("Revise sus credenciales " + e), HttpStatus.BAD_REQUEST);
         }
     }*/
-
-   /* @PostMapping("/register")
+/*
+    @PostMapping("/register")
     public ResponseEntity<Usuario> crear(@RequestBody Usuario c) {
         try {
             c.setEstado(true);
-            c.setPassword(passwordEncoder.encode(c.getPassword()));
+            c.setClave(passwordEncoder.encode(c.getClave()));
             return new ResponseEntity<>(userService.save(c), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
-*/
+    }*/
+
    // @PostMapping("/register")
   // public ResponseEntity<Object> resgister(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
 //        if (bindingResult.hasErrors()) {

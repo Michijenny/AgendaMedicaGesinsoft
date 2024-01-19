@@ -33,13 +33,18 @@ public class PersonaController {
 
     @Autowired
     PersonaService perService;
-
+/*
     @GetMapping("/listar")
     public ResponseEntity<List<Persona>> listarPersona() {
-        return new ResponseEntity<>(perService.findByAll(),
-                HttpStatus.OK);
+        return new ResponseEntity.ok(perService.findByAll());
+    }
+    */
+    @GetMapping
+    ResponseEntity<List<?>> list() {
+        return ResponseEntity.ok(perService.findByAll());
     }
 
+    
     @PostMapping("/crear")
     public ResponseEntity<Persona> crearPersona(
             @RequestBody Persona p) {

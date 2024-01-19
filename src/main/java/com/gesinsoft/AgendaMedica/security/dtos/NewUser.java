@@ -9,7 +9,9 @@ package com.gesinsoft.AgendaMedica.security.dtos;
 //import java.util.List;
 import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -17,6 +19,9 @@ import lombok.Setter;
  * @author enriq
  */
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 //@AllArgsConstructor
 public class NewUser {
 
@@ -58,6 +63,7 @@ public class NewUser {
     @NotBlank
     private String nombre;
 
+    /*
     @Setter
     @Getter
     private String clavesecreta;
@@ -79,9 +85,9 @@ public class NewUser {
     private String telefono;
 
     @Setter
-    @Getter
+    @Getter*/
     private String clave;
-
+/*
     @Setter
     @Getter
     private String notaAuto;
@@ -129,5 +135,5 @@ public class NewUser {
 
     public NewUser() {
     }
-
+*/
 }
