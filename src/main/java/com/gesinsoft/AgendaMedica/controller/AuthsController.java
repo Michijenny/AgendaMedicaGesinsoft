@@ -85,6 +85,7 @@ public class AuthsController {
 		}
 	}
 
+
 	@GetMapping("/listarr/{id}")
 	public ResponseEntity<?> getDoctorById(@PathVariable("id") Integer id) {
 		try {
